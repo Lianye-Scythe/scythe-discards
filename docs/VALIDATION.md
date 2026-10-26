@@ -1,4 +1,25 @@
-# 開發與驗證紀錄
+# Validation
+
+## v0.3.3 release baseline
+
+The source repository is public. The ordinary v0.3.3 Release is still a draft; its ZIP is not yet available for public download. This summary describes the tested release baseline at commit `8f74ddc`, not a promise of broad browser or workload coverage.
+
+| Check | Recorded result |
+| --- | --- |
+| Type checking and core/i18n tests | Passed; 32 tests |
+| Linux Chrome for Testing | English, Traditional Chinese and Simplified Chinese each passed 8 API/lifecycle cases + 16 UI groups |
+| Windows Chrome for Testing | The same three-language matrix passed |
+| Installed Windows Chrome | Traditional Chinese passed the same 8 + 16 groups |
+| Release workflow | Both OS jobs and the draft creation job passed |
+| Release ZIP | 19 files; SHA256SUMS verified; runtime matches both CI builds |
+
+Evidence: [main-branch CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40349873313) and [tag/release CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40350912938). Testing used isolated profiles. The CI browser was Chrome for Testing 156.0.8078.47; the separately installed Windows browser was 156.0.8078.48. Windows copies of text/HTML files differ only in line endings from the Linux release package.
+
+These results cover the fixtures and interaction paths exercised. Real sleep/wake, long-term use, hundreds of real tabs, memory benefit, macOS and complete WCAG conformance remain outside the demonstrated scope. Reports and captures are generated under the Git-ignored `artifacts/` and `.impeccable/review/` directories and retained as GitHub Actions artifacts according to the workflow policy.
+
+## Development record (Traditional Chinese)
+
+以下保留各開發階段的驗證紀錄；「尚未推送」等敘述反映該階段的狀態，目前公開與雲端驗證狀態以上方摘要為準。
 
 日期：2026-10-26。
 

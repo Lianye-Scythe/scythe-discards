@@ -2,6 +2,10 @@
 
 Product: **Scythe Discards**. Repository/package: `scythe-discards`. License: MIT, selected by the owner.
 
+## Current status
+
+[Lianye-Scythe/scythe-discards](https://github.com/Lianye-Scythe/scythe-discards) is public, and the `v0.3.3` tag has passed the Windows/Linux three-language workflow. The ordinary Release and its checked assets are prepared as a draft. Public source access and public package downloads are separate states.
+
 ## Local release preparation
 
 1. Use the Node LTS version in `.nvmrc` and the exact lockfile: `npm ci`.
@@ -10,17 +14,19 @@ Product: **Scythe Discards**. Repository/package: `scythe-discards`. License: MI
 4. Run `npm run package`. The ZIP and SHA256SUMS are written to `artifacts/`.
 5. Review `PRIVACY.md`, `docs/RELEASE_NOTES.md`, screenshots and the package contents.
 
-The GitHub repository has not been created merely by preparing these files. Repository creation, pushing a public repository, publishing a release and submitting a store listing are separate publication actions.
+Pushing source changes updates the repository. Release publication and Chrome Web Store submission are separate steps.
 
 ## First GitHub release
 
-The proposed target is `Lianye-Scythe/scythe-discards`, with `main` as the default branch and `v0.3.3` as the first release tag.
+The repository is `Lianye-Scythe/scythe-discards`, with `main` as the default branch and `v0.3.3` as the first release tag. The steps below also describe the process for later releases.
 
 1. Review the initial source commit, MIT license, artwork sources, three READMEs and screenshot assets. Builds and temporary reports stay out of Git; distributable ZIPs belong in Releases.
 2. Create the repository with the owner's selected visibility and push `main`.
 3. Wait for the first Windows/Linux CI run, including all three UI languages, to pass. Local results do not establish a successful GitHub-hosted run.
 4. Push the matching `v0.3.3` tag. After validation, the release workflow creates a draft release with the ZIP, SHA256SUMS and release notes.
 5. Check the draft assets and notes, then publish the release when approved. Releases are ordinary releases unless explicitly marked as prereleases.
+
+When publishing, update the release-status paragraph in all three READMEs so the installation path describes the publicly available package.
 
 Contributor guidance and a bug-report form are included. The public README screenshots use only isolated test fixtures. Source code, `dist/`, the ZIP and screenshots are distinct artifacts; the automatic GitHub Source code archive requires building before it can be loaded into Chrome.
 

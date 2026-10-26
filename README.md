@@ -1,65 +1,95 @@
 # Scythe Discards
 
-繁體中文 · [简体中文](README.zh-CN.md) · [English](README.en.md)
+English · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
 
-保留分頁標籤與網址，依明確的閒置時間卸載背景網頁。以 Chrome Manifest V3、TypeScript 與 React 實作；介面採 Chrome 設定頁方向，資料僅留在本機。
+[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT license](LICENSE)
 
-[下載 v0.3.3](https://github.com/Lianye-Scythe/scythe-discards/releases) · [問題回報](https://github.com/Lianye-Scythe/scythe-discards/issues) · [參與開發](CONTRIBUTING.md)
+Automatically unload inactive Chrome pages after a chosen idle time. Keep your tabs and URLs; pages reload when you return.
 
-| 小選單 | 網站規則來源 |
+[Installation](#installation) · [Screenshots](#screenshots) · [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
+
+## Installation
+
+**The source is public; the v0.3.3 packaged release is still a draft.** Until it is published, build from source:
+
+1. Install Node.js **24.22.1 LTS** and npm **12.2.1**, then run:
+
+   ```bash
+   git clone https://github.com/Lianye-Scythe/scythe-discards.git
+   cd scythe-discards
+   npm ci
+   npm run build
+   ```
+
+2. Open `chrome://extensions` and enable **Developer mode**.
+3. Select **Load unpacked** and choose the repository's `dist/` folder.
+
+Published packages will be available under [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases), with a matching `SHA256SUMS` file. Use the extension ZIP; GitHub's automatic **Source code** archives require the build above.
+
+Defaults: **Normal mode · 30 minutes · System theme**. Returning to an unloaded page reloads it; unsaved work may be lost. Protect important websites with exceptions.
+
+## Features
+
+- **Timed unloading:** normal and strict modes with configurable inactivity timeouts.
+- **Precise exceptions:** protect one hostname or a domain including its subdomains.
+- **Quick controls:** pause automation, protect a tab, add or remove website rules, and undo removals.
+- **Clear state:** see protection sources, timeouts, recent activity and connection errors.
+- **Local history:** at most 200 session events, displayed 50 per page, with a clear action.
+- **Three languages and two themes:** English, Traditional Chinese and Simplified Chinese follow Chrome's language; appearance follows the system or your light/dark choice.
+
+## Screenshots
+
+<img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
+
+<details>
+<summary>Website rule sources and the settings page</summary>
+
+<img src="docs/images/popup-inherited.png" width="300" alt="Inherited website protection showing its rule source and management action">
+
+![English settings page](docs/images/settings.png)
+
+</details>
+
+Screenshots use an isolated Windows test profile and example websites. Webpage titles retain their original language.
+
+## How protection works
+
+| Mode | Behavior at the timeout |
 | --- | --- |
-| <img src="docs/images/popup.png" width="280" alt="小選單：自動卸載、目前分頁與網站保護"> | <img src="docs/images/popup-inherited.png" width="280" alt="繼承保護：顯示規則來源與管理入口"> |
+| Normal | Keeps pinned tabs, tabs playing audio, and tabs Chrome marks as not auto-discardable |
+| Strict | Requests unloading even for those tabs |
 
-[設定頁預覽](docs/images/settings.png)。畫面使用獨立測試設定檔及範例網站。
+**Both modes preserve active tabs, active split-view peers, website exceptions and manual tab protection.** The timer starts when you leave a tab; returning and leaving starts a new timer. Sleep, browser scheduling and rejected API calls can delay unloading.
 
-## 功能
+Website rules match hostnames across URL paths, protocols and ports. For example, an exact `docs.example.com` rule does not protect `mail.example.com`; an `example.com` rule including subdomains protects both. Domain scope uses the bundled Public Suffix List, including private suffixes.
 
-v0.3.3 精簡 popup 高度與網站範圍說明，明確呈現繼承規則；長網域可展開查看完整名稱，斷線時優先顯示恢復入口並保留 Undo。
+No fixed RAM ceiling or second-exact execution is promised. Memory benefit depends on your workload; see [validation and limits](docs/VALIDATION.md).
 
-- **一般逾時**保留釘選、播放音訊及停用自動卸載的分頁；**嚴格逾時**不受這些軟性保護限制。
-- 兩種模式都保留使用中、有效分割畫面、網站白名單與手動保護的分頁。
-- Popup 可選「僅此網站」或「主網域及子網域」，快速加入／移除規則並撤銷移除。繼承保護會顯示來源與管理入口，長網域可展開查看。
-- 白名單按 hostname 比對，不依網址路徑、協定或 port 區分。主網域辨識使用包含私有後綴的 Public Suffix List。
-- 紀錄保留本次工作階段最新 200 筆，每頁 50 筆，可清除。
-- 英文、繁體中文、簡體中文跟隨 Chrome 語言，未支援語系回退英文。外觀跟隨系統，亦可手動選深／淺色。
-- 背景服務不載入 React，不注入網站內容程式，不使用遙測或遠端後端。
+## Updating
 
-預設：一般模式、30 分鐘、跟隨系統外觀。`discard` 會在切回分頁時重新載入，無法保證保留未儲存內容。排程受睡眠、Chrome 延遲及 API 拒絕影響，不保證準時到秒或固定 RAM 上限。
+Keep the existing installation folder path, replace its built contents and click **Reload** at `chrome://extensions`. Keeping the path preserves the unpacked extension ID and stored settings; an older `chrome-discards` folder name can stay.
 
-## 安裝與更新
+Reload/update resets inactivity timers, manual tab protection and recent activity. Mode, timeout, website exceptions and theme persist.
 
-從 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) 下載 `scythe-discards-0.3.3.zip`（擴充功能安裝包），解壓縮至固定資料夾；同頁附有 `SHA256SUMS`。GitHub 自動產生的 Source code 壓縮檔需先建置。
+## Privacy and permissions
 
-於 `chrome://extensions` 開啟「開發人員模式」，選擇「載入未封裝項目」，指定含 `manifest.json` 的資料夾。Windows 新安裝可用 `C:\Tools\scythe-discards`。自行建置則載入 `dist/`。
+All runtime code and assets are bundled locally. There are no accounts, telemetry, content scripts or remote backend.
 
-**從舊版更新時保留原安裝資料夾路徑**，將 ZIP 內容覆蓋進去，再按「重新載入」。資料夾可維持舊名 `chrome-discards`；路徑保留能沿用未封裝擴充功能的 ID 與網站設定。
+| Permission | Purpose |
+| --- | --- |
+| `tabs` | Read tab metadata and states; request unloading |
+| `storage` | Save settings and bounded session state locally |
+| `alarms` | Check timeouts without one persistent timer per tab |
 
-重新載入／更新會清除工作階段倒數、手動分頁保護與最近紀錄；模式、時間、網站白名單與外觀設定會保留。
+The extension uses URLs and tab metadata locally. Read the [privacy policy](PRIVACY.md) for storage and retention details.
 
-## 開發與測試
+## Development and documentation
 
-Node.js **24.22.1 LTS**、npm **12.2.1**；依賴固定精確版本，使用 `npm ci` 重現。
+Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS. The background worker does not load React; dependencies are exact-pinned.
 
-```bash
-npm ci
-npm run check
-npm test
-npm run build
-npm run test:setup
-npm run test:locales
-npm run package
-```
+- [Contributing and test commands](CONTRIBUTING.md)
+- [Validation results and limitations](docs/VALIDATION.md) · [Changelog](CHANGELOG.md)
+- [Release process](docs/PUBLISHING.md) · [Translation maintenance](docs/I18N.md)
+- [Technical plan](docs/PLAN.md) · [Design notes](DESIGN.md) (Traditional Chinese)
 
-`test:setup` 下載官方最新穩定版 Chrome for Testing，使用獨立設定檔。`test:locales` 在英文、簡中、繁中分別驗證核心 Chrome 行為及 UI；可用 `npm run test:ui -- --locale=zh-TW` 單獨執行。結果在 `artifacts/`，畫面在 `.impeccable/review/`。
-
-安裝包：`artifacts/scythe-discards-0.3.3.zip`，檢查碼：`artifacts/SHA256SUMS`。開發時也可載入 `dist/`。
-
-## 文件
-
-- [驗證結果與限制](docs/VALIDATION.md)
-- [產品與技術規劃](docs/PLAN.md)
-- [版本紀錄](CHANGELOG.md)、[版本說明](docs/RELEASE_NOTES.md)
-- [隱私權政策](PRIVACY.md)、[發佈流程](docs/PUBLISHING.md)
-- [設計系統](DESIGN.md)、[翻譯維護](docs/I18N.md)
-
-授權：[MIT](LICENSE)。第三方元件遵循各自授權，建置時包含完整 notices。
+[MIT licensed](LICENSE). Bundled dependencies retain their [third-party notices](THIRD_PARTY_NOTICES.md).

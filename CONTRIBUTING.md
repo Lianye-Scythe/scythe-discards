@@ -24,6 +24,7 @@ Load `dist/` as an unpacked extension at `chrome://extensions` to try a local bu
 - Keep the discard policy, controller and browser adapter boundaries clear. Policy behavior belongs in `src/core/`; UI rendering belongs in `src/ui/`.
 - Preserve the Chrome Settings direction in `DESIGN.md`, system/manual themes, visible keyboard focus and existing quick actions. UI changes should include relevant screenshots and interaction checks.
 - Keep the English, Traditional Chinese and Simplified Chinese catalogs consistent. See [translation maintenance](docs/I18N.md).
+- The default `README.md` is English. Keep `README.zh-TW.md` and `README.zh-CN.md` aligned with it; `README.en.md` is a compatibility link.
 - Use local runtime assets and libraries. Explain a new dependency or extension permission in the pull request.
 - Run checks relevant to the change and state what was verified. A documentation edit does not require repeating the browser suite.
 

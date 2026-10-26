@@ -1,9 +1,11 @@
 # Preview screenshots
 
-These are unedited screenshots of Scythe Discards v0.3.3 running in installed Windows Chrome 156.0.8078.48 with Traditional Chinese UI, an isolated test profile and example websites.
+These are unedited screenshots of Scythe Discards v0.3.3 using isolated Windows test profiles and example websites. Webpage titles retain their original language.
 
-- `popup.png`: ordinary toolbar popup, 360 × 475px.
-- `popup-inherited.png`: inherited website protection with its rule source, 360 × 503px.
-- `settings.png`: desktop settings page.
+| Interface language | Files | Capture source |
+| --- | --- | --- |
+| English | `popup.png`, `popup-inherited.png`, `settings.png` | Windows Chrome for Testing 156.0.8078.47, [GitHub CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40349873313) |
+| Traditional Chinese | Corresponding `*-zh-TW.png` files | Installed Windows Chrome 156.0.8078.48, local validation |
+| Simplified Chinese | Corresponding `*-zh-CN.png` files | Windows Chrome for Testing 156.0.8078.47, the same GitHub CI run |
 
-The originals were captured by `tests/browser.mjs` and `tests/ui-flows.js` during the validation recorded in [VALIDATION.md](../VALIDATION.md). Regenerate with the same test fixtures when the interface changes; keep screenshots free of everyday browsing data.
+The originals were captured by `tests/browser.mjs` and `tests/ui-flows.js` during the validation recorded in [VALIDATION.md](../VALIDATION.md). Each language README uses matching interface captures. Regenerate with the same fixtures when the interface changes; keep screenshots free of everyday browsing data.
