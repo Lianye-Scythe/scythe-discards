@@ -172,6 +172,24 @@ async page => {
   record('popup unsupported page and localized scope controls');
 
   // Seed only this isolated profile to verify long history, pagination and clear.
+  // Leave the UI to stop its polling, then drain writes and stop the worker before
+  // replacing storage. Otherwise a live controller can overwrite the fixture.
+  await page.goto('chrome-extension://' + extensionId + '/manifest.json');
+  await page.evaluate(async () => {
+    await chrome.runtime.sendMessage({ type: 'snapshot' });
+    await chrome.alarms.clear('discards:scan');
+  });
+  const cdp = await context.newCDPSession(page);
+  const targets = await cdp.send('Target.getTargets');
+  const target = targets.targetInfos.find(item => item.type === 'service_worker' && item.url.includes(extensionId));
+  assert(target, 'History fixture worker target missing');
+  assert((await cdp.send('Target.closeTarget', { targetId: target.targetId })).success, 'History fixture worker did not close');
+  const deadline = Date.now() + 5000;
+  while ((await cdp.send('Target.getTargets')).targetInfos.some(item => item.targetId === target.targetId)) {
+    assert(Date.now() < deadline, 'History fixture worker did not stop');
+    await new Promise(resolve => setTimeout(resolve, 50));
+  }
+  await cdp.detach();
   await page.evaluate(async () => {
     const { session } = await chrome.storage.session.get('session');
     session.activities = Array.from({ length: 125 }, (_, index) => ({ id: 'history-' + index,
@@ -179,11 +197,9 @@ async page => {
       kind: 'discarded', code: index % 2 ? 'discard-normal' : 'discard-strict' }));
     await chrome.storage.session.set({ session });
   });
-  const cdp = await context.newCDPSession(page); await cdp.send('ServiceWorker.enable');
-  const targets = await cdp.send('Target.getTargets');
-  const target = targets.targetInfos.find(item => item.type === 'service_worker' && item.url.includes(extensionId));
-  if (target) await cdp.send('Target.closeTarget', { targetId: target.targetId });
-  await cdp.detach(); await page.reload(); await page.locator('#running-status[data-state="running"]').waitFor(); await navigate(activity);
+  await page.goto(base); await page.locator('#running-status[data-state="running"]').waitFor(); await navigate(activity);
+  const history = (await rpc({ type: 'snapshot' })).activities;
+  assert(history.length === 125 && history.every(item => item.id.startsWith('history-')), 'History fixture was not loaded');
   assert(await page.locator('.activity-row').count() === 50, 'History page not limited to 50');
   await page.locator('#activity-next').click(); assert(await page.locator('.activity-row').count() === 50, 'History page 2 failed');
   if (isTW) { await page.setViewportSize({ width: 1440, height: 1000 }); await capture(page, 'activity-page2'); }
