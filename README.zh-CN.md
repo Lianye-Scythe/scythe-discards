@@ -10,21 +10,27 @@
 
 ## 安装方式
 
-**源代码已公开，v0.3.3 安装包目前仍为 Release 草稿。** 公开安装包前，可自行构建：
+1. 打开 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases)，下载扩展 ZIP：`scythe-discards-<版本>.zip`，同页提供对应的 `SHA256SUMS`。
+2. 解压到固定目录。
+3. 在 `chrome://extensions` 开启“开发者模式”，选择“加载已解压的扩展程序”，指定含 `manifest.json` 的解压目录。
 
-1. 安装 Node.js **24.22.1 LTS** 和 npm **12.2.1**，再执行：
+GitHub 自动生成的 **Source code** 压缩包仍需构建。如果尚未列出安装包，可按下方方式自行构建。
 
-   ```bash
-   git clone https://github.com/Lianye-Scythe/scythe-discards.git
-   cd scythe-discards
-   npm ci
-   npm run build
-   ```
+<details>
+<summary>从源代码构建</summary>
 
-2. 打开 `chrome://extensions`，开启“开发者模式”。
-3. 选择“加载已解压的扩展程序”，指定项目的 `dist/` 目录。
+安装 Node.js **24.22.1 LTS** 和 npm **12.2.1**，再执行：
 
-公开安装包后，可从 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) 下载扩展 ZIP 和对应的 `SHA256SUMS`。GitHub 自动生成的 **Source code** 压缩包仍需先构建。
+```bash
+git clone https://github.com/Lianye-Scythe/scythe-discards.git
+cd scythe-discards
+npm ci
+npm run build
+```
+
+在 `chrome://extensions` 使用相同的“加载已解压的扩展程序”操作，指定项目的 `dist/` 目录。
+
+</details>
 
 默认：**普通模式 · 30 分钟 · 跟随系统外观**。切回已卸载网页时会重新加载，未保存的内容可能丢失；重要网站可加入例外。
 

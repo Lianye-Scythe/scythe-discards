@@ -1,47 +1,57 @@
 # Publishing a release
 
-Product: **Scythe Discards**. Repository/package: `scythe-discards`. License: MIT, selected by the owner.
+Product: **Scythe Discards**. Repository: [Lianye-Scythe/scythe-discards](https://github.com/Lianye-Scythe/scythe-discards). License: MIT.
 
-## Current status
+## Automatic publication
 
-[Lianye-Scythe/scythe-discards](https://github.com/Lianye-Scythe/scythe-discards) is public, and the `v0.3.3` tag has passed the Windows/Linux three-language workflow. The ordinary Release and its checked assets are prepared as a draft. Public source access and public package downloads are separate states.
+Pushing a stable version tag such as `v0.3.3` triggers **Publish release**:
 
-## Local release preparation
+1. Check out that tag and validate it on Windows and Linux, including all three UI languages.
+2. Check that the tag uses `vMAJOR.MINOR.PATCH` and matches the tagged `package.json` version.
+3. Build the extension ZIP and verify its SHA256SUMS.
+4. Create or resume a temporary draft and upload the ZIP and checksum.
+5. Automatically publish an ordinary Release. There is no manual publication gate or Pre-release flag.
 
-1. Use the Node LTS version in `.nvmrc` and the exact lockfile: `npm ci`.
-2. Run `npm run check`, `npm test`, `npm run build` and `npm run test:setup`.
-3. Run `npm run test:locales` to test English, Simplified Chinese and Traditional Chinese in isolated Chrome profiles.
-4. Run `npm run package`. The ZIP and SHA256SUMS are written to `artifacts/`.
-5. Review `PRIVACY.md`, `docs/RELEASE_NOTES.md`, screenshots and the package contents.
+The CI workflow and the packaging job check out the same tag. A failed validation or asset upload prevents publication. Runs for the same tag are serialized. If a release is already public, a rerun leaves its existing assets unchanged.
 
-Pushing source changes updates the repository. Release publication and Chrome Web Store submission are separate steps.
+This automates GitHub Releases. Chrome Web Store submission is a separate process.
 
-## First GitHub release
+## Prepare the next version
 
-The repository is `Lianye-Scythe/scythe-discards`, with `main` as the default branch and `v0.3.3` as the first release tag. The steps below also describe the process for later releases.
+1. Update `package.json`, `package-lock.json` and `public/manifest.json` consistently.
+2. Update `CHANGELOG.md` and `docs/RELEASE_NOTES.md` with the resulting user-visible behavior and relevant validation.
+3. Use the Node LTS version in `.nvmrc` and the exact lockfile: `npm ci`.
+4. Run `npm run check`, `npm test`, `npm run build`, `npm run test:setup` and `npm run test:locales`.
+5. Review the package with `npm run package`, commit the changes and push `main`.
+6. Create and push the matching version tag. That push authorizes the workflow to publish the release after CI passes.
 
-1. Review the initial source commit, MIT license, artwork sources, three READMEs and screenshot assets. Builds and temporary reports stay out of Git; distributable ZIPs belong in Releases.
-2. Create the repository with the owner's selected visibility and push `main`.
-3. Wait for the first Windows/Linux CI run, including all three UI languages, to pass. Local results do not establish a successful GitHub-hosted run.
-4. Push the matching `v0.3.3` tag. After validation, the release workflow creates a draft release with the ZIP, SHA256SUMS and release notes.
-5. Check the draft assets and notes, then publish the release when approved. Releases are ordinary releases unless explicitly marked as prereleases.
+For example, after committing version `0.3.4`:
 
-When publishing, update the release-status paragraph in all three READMEs so the installation path describes the publicly available package.
+```bash
+git tag -a v0.3.4 -m "Scythe Discards v0.3.4"
+git push origin v0.3.4
+```
 
-Contributor guidance and a bug-report form are included. The public README screenshots use only isolated test fixtures. Source code, `dist/`, the ZIP and screenshots are distinct artifacts; the automatic GitHub Source code archive requires building before it can be loaded into Chrome.
+The workflow attaches the extension ZIP and SHA256SUMS. GitHub's automatic Source code archives require building before they can be loaded into Chrome. Builds and temporary reports stay out of Git.
 
-## GitHub automation
+## Retry an existing tag
 
-The CI workflow checks Windows and Linux with Node from `.nvmrc`, exact dependencies, core tests and three UI languages. It retains reports, screenshots and ZIPs as workflow artifacts.
+The workflow also supports **Run workflow** on the default branch, with an existing tag as input. This uses the current automation while validating and packaging the selected tag; the tag itself is not moved.
 
-Pushing a `v*` tag runs validation and then prepares a **draft release**. The tag must match the package version. The workflow does not publish the draft automatically. Workflow actions are pinned to verified release commit SHAs.
+```bash
+gh workflow run release.yml --ref main -f tag=v0.3.3
+```
+
+A draft can be resumed automatically. Published releases are preserved; use a new version for changed runtime content.
+
+GitHub references: [reusable workflow inputs](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows), [manual workflow runs](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow).
 
 ## Chrome Web Store preparation
 
-- Name, description and interface: `en`, `zh_TW`, `zh_CN`. Store descriptions and screenshots are separate listing assets; use the matching language.
+- Name, description and interface: `en`, `zh_TW`, `zh_CN`. Store descriptions and screenshots are separate listing assets.
 - Publish a reachable privacy-policy URL based on `PRIVACY.md` and keep it consistent with the implemented local data handling.
-- Explain `tabs`, `storage` and `alarms` by their actual uses. Do not claim the extension handles no user data; it uses tab metadata locally.
-- Describe strict timeout, the possibility of losing unsaved content, website-rule scope and scheduling delays accurately.
+- Explain `tabs`, `storage` and `alarms` by their actual uses. The extension uses tab metadata locally.
+- Describe strict timeout, unsaved-content behavior, website-rule scope and scheduling delays accurately.
 - Record compatibility and real workload evidence; avoid unsupported RAM-saving percentages or guarantees.
 
-Use the current store dashboard for submission and required fields. No store submission is performed by the local build or CI.
+Use the current store dashboard for submission. GitHub automation does not submit a store listing.

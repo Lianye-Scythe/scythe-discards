@@ -10,21 +10,27 @@ Automatically unload inactive Chrome pages after a chosen idle time. Keep your t
 
 ## Installation
 
-**The source is public; the v0.3.3 packaged release is still a draft.** Until it is published, build from source:
+1. Open [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) and download the extension ZIP, `scythe-discards-<version>.zip`. A matching `SHA256SUMS` file is provided.
+2. Extract it to a permanent folder.
+3. At `chrome://extensions`, enable **Developer mode**, select **Load unpacked**, and choose the extracted folder containing `manifest.json`.
 
-1. Install Node.js **24.22.1 LTS** and npm **12.2.1**, then run:
+GitHub's automatic **Source code** archives require a build. If no packaged release is listed yet, use the source instructions below.
 
-   ```bash
-   git clone https://github.com/Lianye-Scythe/scythe-discards.git
-   cd scythe-discards
-   npm ci
-   npm run build
-   ```
+<details>
+<summary>Build from source</summary>
 
-2. Open `chrome://extensions` and enable **Developer mode**.
-3. Select **Load unpacked** and choose the repository's `dist/` folder.
+Install Node.js **24.22.1 LTS** and npm **12.2.1**, then run:
 
-Published packages will be available under [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases), with a matching `SHA256SUMS` file. Use the extension ZIP; GitHub's automatic **Source code** archives require the build above.
+```bash
+git clone https://github.com/Lianye-Scythe/scythe-discards.git
+cd scythe-discards
+npm ci
+npm run build
+```
+
+Load the repository's `dist/` folder at `chrome://extensions` using the same **Load unpacked** action.
+
+</details>
 
 Defaults: **Normal mode · 30 minutes · System theme**. Returning to an unloaded page reloads it; unsaved work may be lost. Protect important websites with exceptions.
 

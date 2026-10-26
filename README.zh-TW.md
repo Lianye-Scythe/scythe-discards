@@ -10,21 +10,27 @@
 
 ## 安裝方式
 
-**原始碼已公開，v0.3.3 安裝包目前仍是 Release 草稿。** 公開安裝包前，可自行建置：
+1. 開啟 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases)，下載擴充功能 ZIP：`scythe-discards-<版本>.zip`，同頁提供對應的 `SHA256SUMS`。
+2. 解壓縮至固定資料夾。
+3. 到 `chrome://extensions` 啟用「開發人員模式」，選擇「載入未封裝項目」，指定含 `manifest.json` 的解壓縮資料夾。
 
-1. 安裝 Node.js **24.22.1 LTS** 與 npm **12.2.1**，再執行：
+GitHub 自動產生的 **Source code** 壓縮檔仍需建置。若尚未列出安裝包，可依下方方式自行建置。
 
-   ```bash
-   git clone https://github.com/Lianye-Scythe/scythe-discards.git
-   cd scythe-discards
-   npm ci
-   npm run build
-   ```
+<details>
+<summary>從原始碼建置</summary>
 
-2. 開啟 `chrome://extensions`，啟用「開發人員模式」。
-3. 選擇「載入未封裝項目」，指定專案的 `dist/` 資料夾。
+安裝 Node.js **24.22.1 LTS** 與 npm **12.2.1**，再執行：
 
-公開安裝包後，可從 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) 下載擴充功能 ZIP 及對應的 `SHA256SUMS`。GitHub 自動產生的 **Source code** 壓縮檔仍需先建置。
+```bash
+git clone https://github.com/Lianye-Scythe/scythe-discards.git
+cd scythe-discards
+npm ci
+npm run build
+```
+
+在 `chrome://extensions` 使用相同的「載入未封裝項目」動作，指定專案的 `dist/` 資料夾。
+
+</details>
 
 預設：**一般模式 · 30 分鐘 · 跟隨系統外觀**。切回已卸載網頁時會重新載入，未儲存的內容可能遺失；重要網站可加入例外。
 

@@ -1,6 +1,6 @@
 # Scythe Discards 規劃與技術方案
 
-日期：2026-10-26。狀態：v0.3.3 原始碼已公開，Windows／Linux 三語 GitHub CI 通過；一般 Release 目前為草稿。實測範圍另記於 [VALIDATION.md](VALIDATION.md)。
+日期：2026-10-26。狀態：v0.3.3 原始碼已公開，Windows／Linux 三語 GitHub CI 通過；一般 Release 在版本標籤的 CI 通過後自動公開。實測範圍另記於 [VALIDATION.md](VALIDATION.md)。
 
 ## 1. 要解決的問題
 
