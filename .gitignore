@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+.playwright-cli/
+*.log
+.DS_Store
+Thumbs.db
+artifacts/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/config.local.json
+.env
+.env.*
+!.env.example

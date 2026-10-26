@@ -1,0 +1,56 @@
+{
+  "name": "scythe-discards",
+  "version": "0.3.3",
+  "private": true,
+  "type": "module",
+  "description": "依閒置時間與白名單卸載 Chrome 背景分頁。",
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "test:setup": "node scripts/install-test-browser.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "package": "npm run build && node scripts/package.mjs",
+    "test:ui": "node tests/browser.mjs --ui",
+    "test:locales": "node scripts/test-locales.mjs"
+  },
+  "packageManager": "npm@12.2.1",
+  "devDependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "@tailwindcss/cli": "4.3.3",
+    "@types/chrome": "0.3.6",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3",
+    "playwright": "1.64.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "1.4.1",
+    "@radix-ui/react-radio-group": "1.5.1",
+    "@radix-ui/react-switch": "1.4.1",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "1.61.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tailwind-merge": "3.7.0",
+    "tldts": "7.4.19"
+  },
+  "license": "MIT",
+  "author": "Lianye-Scythe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lianye-Scythe/scythe-discards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lianye-Scythe/scythe-discards/issues"
+  },
+  "homepage": "https://github.com/Lianye-Scythe/scythe-discards#readme"
+}
