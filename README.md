@@ -6,15 +6,19 @@ English · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
 
 Automatically unload inactive Chrome pages after a chosen idle time. Keep your tabs and URLs; pages reload when you return.
 
-[Installation](#installation) · [Screenshots](#screenshots) · [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
+For people who keep many tabs open and want to choose their idle timeout and website exceptions.
+
+**[Download latest](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [Installation](#installation) · [More screenshots](#more-screenshots) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
+
+<img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
 
 ## Installation
 
-1. Open [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) and download the extension ZIP, `scythe-discards-<version>.zip`. A matching `SHA256SUMS` file is provided.
+1. Open the [latest release](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) and download the extension ZIP, `scythe-discards-<version>.zip`. A matching `SHA256SUMS` file is provided.
 2. Extract it to a permanent folder.
 3. At `chrome://extensions`, enable **Developer mode**, select **Load unpacked**, and choose the extracted folder containing `manifest.json`.
 
-GitHub's automatic **Source code** archives require a build. If no packaged release is listed yet, use the source instructions below.
+GitHub's automatic **Source code** archives require a build.
 
 <details>
 <summary>Build from source</summary>
@@ -37,15 +41,13 @@ Defaults: **Normal mode · 30 minutes · System theme**. Returning to an unloade
 ## Features
 
 - **Timed unloading:** normal and strict modes with configurable inactivity timeouts.
-- **Precise exceptions:** protect one hostname or a domain including its subdomains.
+- **Precise exceptions:** protect one website or a domain including its subdomains.
 - **Quick controls:** pause automation, protect a tab, add or remove website rules, and undo removals.
 - **Clear state:** see protection sources, timeouts, recent activity and connection errors.
 - **Local history:** at most 200 session events, displayed 50 per page, with a clear action.
 - **Three languages and two themes:** English, Traditional Chinese and Simplified Chinese follow Chrome's language; appearance follows the system or your light/dark choice.
 
-## Screenshots
-
-<img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
+## More screenshots
 
 <details>
 <summary>Website rule sources and the settings page</summary>
@@ -67,7 +69,7 @@ Screenshots use an isolated Windows test profile and example websites. Webpage t
 
 **Both modes preserve active tabs, active split-view peers, website exceptions and manual tab protection.** The timer starts when you leave a tab; returning and leaving starts a new timer. Sleep, browser scheduling and rejected API calls can delay unloading.
 
-Website rules match hostnames across URL paths, protocols and ports. For example, an exact `docs.example.com` rule does not protect `mail.example.com`; an `example.com` rule including subdomains protects both. Domain scope uses the bundled Public Suffix List, including private suffixes.
+An exact `docs.example.com` website rule does not protect `mail.example.com`; an `example.com` rule including subdomains protects both.
 
 No fixed RAM ceiling or second-exact execution is promised. Memory benefit depends on your workload; see [validation and limits](docs/VALIDATION.md).
 

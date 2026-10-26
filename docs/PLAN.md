@@ -57,6 +57,7 @@
 - `example.com`、包含子網域：保護本身及 `docs.example.com` 等子網域。
 - `notexample.com`、`example.com.attacker.test` 都不能匹配上述規則。
 - 以 `URL.hostname` 解析，統一大小寫、國際化網域及結尾的點；不以整段 URL 的字串包含判斷。
+- 路徑、協定與 port 不影響 hostname 比對，例如 `http://docs.example.com:8080/a` 與 `https://docs.example.com/b` 套用相同網站規則；只有 HTTP／HTTPS 網頁是卸載對象。
 - 不提供任意正規表示式或複雜 URL 萬用字元。
 - v0.3 popup 可選「僅目前 hostname」或「主網域與所有子網域」。以本機 tldts 及內附 Public Suffix List 判斷主網域，含私人後綴，例如 alice.github.io 不會擴大為 github.io。
 - 公共後綴、IP、localhost 不提供含所有子網域的規則；舊有不安全的廣泛規則降為精確 hostname。

@@ -6,15 +6,19 @@
 
 在设定的闲置时间后，自动卸载 Chrome 后台网页。保留标签页和网址，切回时重新加载。
 
-[安装方式](#安装方式) · [界面预览](#界面预览) · [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases) · [问题反馈](https://github.com/Lianye-Scythe/scythe-discards/issues)
+适合习惯打开大量标签页，并希望自行控制卸载时间和网站例外的用户。
+
+**[下载最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安装方式](#安装方式) · [更多截图](#更多截图) · [问题反馈](https://github.com/Lianye-Scythe/scythe-discards/issues)
+
+<img src="docs/images/popup-zh-CN.png" width="300" alt="简体中文小窗口：自动卸载、当前标签页和网站保护">
 
 ## 安装方式
 
-1. 打开 [Releases](https://github.com/Lianye-Scythe/scythe-discards/releases)，下载扩展 ZIP：`scythe-discards-<版本>.zip`，同页提供对应的 `SHA256SUMS`。
+1. 打开[最新版本](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)，下载扩展 ZIP：`scythe-discards-<版本>.zip`，同页提供对应的 `SHA256SUMS`。
 2. 解压到固定目录。
 3. 在 `chrome://extensions` 开启“开发者模式”，选择“加载已解压的扩展程序”，指定含 `manifest.json` 的解压目录。
 
-GitHub 自动生成的 **Source code** 压缩包仍需构建。如果尚未列出安装包，可按下方方式自行构建。
+GitHub 自动生成的 **Source code** 压缩包仍需构建。
 
 <details>
 <summary>从源代码构建</summary>
@@ -37,15 +41,13 @@ npm run build
 ## 功能
 
 - **闲置卸载：** 可设置超时时间，提供普通和严格模式。
-- **精确网站例外：** 保护单一 hostname，或主域名及其子域名。
+- **精确网站例外：** 保护单一网站，或主域名及其子域名。
 - **快捷操作：** 暂停自动卸载、保护标签页、增删网站规则，以及撤销移除。
 - **清晰状态：** 显示保护来源、倒计时、近期记录和连接错误。
 - **有限记录：** 保留本次会话最新 200 条，每页 50 条，可清除。
 - **三语和深浅色：** 英语、繁体中文、简体中文跟随 Chrome 语言；外观可跟随系统或手动选择。
 
-## 界面预览
-
-<img src="docs/images/popup-zh-CN.png" width="300" alt="简体中文小窗口：自动卸载、当前标签页和网站保护">
+## 更多截图
 
 <details>
 <summary>网站规则来源和设置页</summary>
@@ -67,7 +69,7 @@ npm run build
 
 **两种模式均保护正在使用的标签页、同组可见分屏、网站例外和手动保护。** 离开标签页后开始计时，切回再离开会重新计时。睡眠、浏览器调度和 API 拒绝可能延迟卸载。
 
-网站规则按 hostname 匹配，覆盖相同主机的不同路径、协议和端口。例如精确 `docs.example.com` 规则不覆盖 `mail.example.com`；包含子域名的 `example.com` 规则则覆盖两者。主域名通过本地 Public Suffix List 识别，包含私有后缀。
+仅保护 `docs.example.com` 的规则不覆盖 `mail.example.com`；将 `example.com` 设为包含子域名，则会保护两者。
 
 不保证固定 RAM 上限或精确到秒执行；内存效果取决于实际使用场景，参阅[验证结果与限制](docs/VALIDATION.md)。
 
