@@ -1,6 +1,6 @@
-[English](../../README.md) · [繁體中文](README.zh-TW.md) · 简体中文
-
 # <img src="../images/icon.png" width="32" height="32" alt=""> Scythe Discards
+
+[English](../../README.md) · [繁體中文](README.zh-TW.md) · 简体中文
 
 按设定的闲置时间自动卸载 Chrome 后台网页，帮助释放内存（RAM）。保留标签页和网址，切回时重新加载。
 

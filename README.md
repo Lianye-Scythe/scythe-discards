@@ -1,6 +1,6 @@
-English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
-
 # <img src="docs/images/icon.png" width="32" height="32" alt=""> Scythe Discards
+
+English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
 
 Automatically unload inactive Chrome pages on a timer to help free RAM. Keep your tabs and URLs; pages reload when you return.
 
