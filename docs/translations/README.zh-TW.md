@@ -1,10 +1,10 @@
+[English](../../README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
+
 # <img src="../images/icon.png" width="32" height="32" alt=""> Scythe Discards
 
 依設定的閒置時間自動卸載 Chrome 背景網頁，協助釋放記憶體（RAM）。保留分頁標籤與網址，切回時重新載入。
 
 **[下載最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安裝方式](#安裝方式) · [問題回報](https://github.com/Lianye-Scythe/scythe-discards/issues)
-
-[English](../../README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
 
 [![版本](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [![MIT](https://img.shields.io/github/license/Lianye-Scythe/scythe-discards)](../../LICENSE)
 

@@ -1,10 +1,10 @@
+[English](../../README.md) · [繁體中文](README.zh-TW.md) · 简体中文
+
 # <img src="../images/icon.png" width="32" height="32" alt=""> Scythe Discards
 
 按设定的闲置时间自动卸载 Chrome 后台网页，帮助释放内存（RAM）。保留标签页和网址，切回时重新加载。
 
 **[下载最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安装方式](#安装方式) · [问题反馈](https://github.com/Lianye-Scythe/scythe-discards/issues)
-
-[English](../../README.md) · [繁體中文](README.zh-TW.md) · 简体中文
 
 [![版本](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [![MIT](https://img.shields.io/github/license/Lianye-Scythe/scythe-discards)](../../LICENSE)
 
