@@ -97,6 +97,6 @@ Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS. The backg
 - [Documentation index and repository layout](docs/README.md)
 - [Validation results and limitations](docs/VALIDATION.md) · [Changelog](CHANGELOG.md)
 - [Release process](docs/PUBLISHING.md) · [Translation maintenance](docs/I18N.md)
-- [Technical plan](docs/PLAN.md) · [Design notes](DESIGN.md) (Traditional Chinese)
+- [Architecture](docs/ARCHITECTURE.md) · [UI guidelines](docs/design/README.md)
 
 [MIT licensed](LICENSE). Bundled dependencies retain their [third-party notices](THIRD_PARTY_NOTICES.md).

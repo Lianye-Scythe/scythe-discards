@@ -31,6 +31,10 @@ jobs:
           cache: npm
       - run: npm install --global npm@12.2.1
       - run: npm ci
+      - name: Check repository contents
+        # Older release tags predate this check; new branch changes must run it.
+        if: ${{ !inputs.ref || hashFiles('scripts/check-repository.mjs') != '' }}
+        run: npm run check:repo
       - run: npm run check
       - run: npm test
       - run: npm run build
@@ -46,6 +50,5 @@ jobs:
             artifacts/*failure*
             artifacts/*.zip
             artifacts/SHA256SUMS
-            .impeccable/review/v*.png
-          include-hidden-files: true
+            artifacts/screenshots/v*.png
           retention-days: 14

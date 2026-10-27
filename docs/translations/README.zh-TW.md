@@ -97,6 +97,6 @@ Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS。背景�
 - [文件索引與專案結構](../README.md)
 - [驗證結果與限制](../VALIDATION.md) · [版本紀錄](../../CHANGELOG.md)
 - [發佈流程](../PUBLISHING.md) · [翻譯維護](../I18N.md)
-- [技術規劃](../PLAN.md) · [設計筆記](../../DESIGN.md)
+- [架構說明](../ARCHITECTURE.md) · [介面維護規範](../design/README.md)
 
 採用 [MIT 授權](../../LICENSE)，第三方元件保留各自的[授權聲明](../../THIRD_PARTY_NOTICES.md)。

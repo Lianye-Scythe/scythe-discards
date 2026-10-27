@@ -6,10 +6,16 @@ coverage/
 .DS_Store
 Thumbs.db
 artifacts/
-.impeccable/review/
-.impeccable/mocks/
-.impeccable/questions/
-.impeccable/config.local.json
+# Local design-tool context and maintainer working records
+/.impeccable/
+/PRODUCT.md
+/DESIGN.md
+/artwork/
+/docs/PLAN.md
+/docs/archive/
+/docs/design/UI_BRIEF.md
+/docs/design/UI_QUALITY_BAR.md
+/docs/images/*.png.json
 .env
 .env.*
 !.env.example

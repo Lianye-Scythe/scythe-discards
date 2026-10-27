@@ -15,13 +15,11 @@ The source repository is public. Ordinary Releases are automatically published a
 
 Evidence: [main-branch CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40349873313) and [tag/release CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40350912938). Testing used isolated profiles. The CI browser was Chrome for Testing 156.0.8078.47; the separately installed Windows browser was 156.0.8078.48. Windows copies of text/HTML files differ only in line endings from the Linux release package.
 
-These results cover the fixtures and interaction paths exercised. Real sleep/wake, long-term use, hundreds of real tabs, memory benefit, macOS and complete WCAG conformance remain outside the demonstrated scope. Reports and captures are generated under the Git-ignored `artifacts/` and `.impeccable/review/` directories and retained as GitHub Actions artifacts according to the workflow policy.
+These results cover the fixtures and interaction paths exercised. Real sleep/wake, long-term use, hundreds of real tabs, memory benefit, macOS and complete WCAG conformance remain outside the demonstrated scope. Reports are generated under the Git-ignored `artifacts/` directory, with current screenshots in `artifacts/screenshots/`, and retained as GitHub Actions artifacts according to the workflow policy.
 
 ## Checks after publication
 
 - [Automated publication](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40419235002) validated the existing v0.3.3 tag and completed the public release with ZIP and checksum assets.
 - [Windows/Linux three-language CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40423142819) passed after activity-fixture setup was isolated from background writes. The fixture is checked before testing 50/50/25 pagination; production behavior was unchanged.
 
-## Historical records
-
-Earlier development checks and UI findings are kept in [archived validation records](archive/validation-history.md) and the [v0.1 UI review](archive/ui-review-v0.1.md). Their version and publication statements describe those historical stages.
+See the [changelog](../CHANGELOG.md) and release tags for earlier versions. The source tree keeps the current validation summary; earlier working records remain in Git history.

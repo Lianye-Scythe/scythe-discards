@@ -12,6 +12,7 @@ const language = process.argv.find(arg => arg.startsWith('--locale='))?.slice(9)
 const localeSuffix = language.replaceAll('-', '_');
 const viaCDP = process.env.DISCARDS_LOAD_VIA_CDP === '1';
 await mkdir(artifacts, { recursive: true });
+await mkdir(resolve(artifacts, 'screenshots'), { recursive: true });
 const server = createServer((request, response) => {
   const path = new URL(request.url, 'http://local.test').pathname;
   const names = { '/research': '研究資料 · Chrome 記憶體管理', '/reading': '稍後閱讀 · 網頁效能筆記',

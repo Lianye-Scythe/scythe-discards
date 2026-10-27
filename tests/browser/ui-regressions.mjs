@@ -22,7 +22,7 @@ export async function runUiRegressions(page) {
     [key, chrome.i18n.getMessage(key, ['$1'])])), keys);
   const t = (key, value) => messages[key].replace('$1', value ?? '');
   const capture = async (target, name) => {
-    const path = '.impeccable/review/v033-' + suffix + '-' + name + '.png';
+    const path = 'artifacts/screenshots/v033-' + suffix + '-' + name + '.png';
     await target.screenshot({ path }); screenshots.push(path);
   };
   const record = name => { passed.push(name); console.log('UI PASS ' + name); };
@@ -49,7 +49,7 @@ export async function runUiRegressions(page) {
       result.bottom <= result.footerTop, name + ': focus is outside the scroll area');
     focusChecks.push({ name, ...result });
   };
-  await mkdir('.impeccable/review', { recursive: true });
+  await mkdir('artifacts/screenshots', { recursive: true });
   const editor = await context.newPage();
   watch(editor);
   await editor.clock.install(); await editor.goto(base + '#allowlist');
@@ -239,7 +239,7 @@ export async function runUiRegressions(page) {
     complete = true;
     return { passed, screenshots, focusChecks, pageErrors, consoleErrors };
   } finally {
-    if (!complete) await popup.screenshot({ path: '.impeccable/review/v033-' + suffix + '-regression-failure.png' }).catch(() => {});
+    if (!complete) await popup.screenshot({ path: 'artifacts/screenshots/v033-' + suffix + '-regression-failure.png' }).catch(() => {});
     if (complete || !process.argv.includes('--keep-open')) {
       await editor.close(); await popup.close(); await fixture.close();
     }

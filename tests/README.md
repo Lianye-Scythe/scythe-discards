@@ -15,6 +15,7 @@ Run commands from the repository root after `npm ci`. The [contributing guide](.
 
 ```bash
 npm run check
+npm run check:repo
 npm test
 npm run build
 npm run test:setup
@@ -30,6 +31,8 @@ The [Windows launcher](../scripts/test-windows.ps1) can test installed Chrome wi
 
 The browser runner serves local fixture pages and creates a temporary browser profile. Tests alter only that profile's state; production code has no test-control message endpoint. Activity pagination loads a verified 125-event fixture after stopping background writes, then checks 50/50/25 pages and clearing.
 
-Results and failures are written to `artifacts/`; UI screenshots are written to `.impeccable/review/`. Temporary profiles are removed on exit. Reports and captures are ignored by Git and uploaded by CI according to its retention policy.
+Results and failures are written to `artifacts/`; UI screenshots are written to `artifacts/screenshots/`. Temporary profiles are removed on exit. Reports and captures are ignored by Git and uploaded by CI according to its retention policy.
+
+`npm run check:repo` checks the tracked file set and public Markdown references. Ignored local files must not be added to Git or used as documentation targets.
 
 See [validation and limits](../docs/VALIDATION.md) for the demonstrated coverage. These fixtures do not establish real-workload RAM savings or long-term sleep/wake reliability.

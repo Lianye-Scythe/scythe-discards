@@ -1,6 +1,6 @@
 {
   "tool": "built-in image_gen",
   "prompt": "Use case: identity-preserve. Asset type: small-size companion of this exact anime portrait for the 16px and 32px Chrome toolbar icon. Reference/edit target: Image 1, the newly drawn golden-haired girl. Keep her identity, golden eyes, warm smile, blonde bangs and braids, emerald ribbons, straw hat and sunflower. Change the framing and simplification ONLY for tiny-size readability: draw a compact super-deformed HEAD ONLY, no torso or shoulders, a tiny collar at most. Make the face and eyes much larger relative to the canvas, with a compact hat and one simplified sunflower. Use bold crisp dark outlines, broad flat colors, only two cel-shading levels, simple hair masses with no fine strands or straw texture. Center one complete friendly head silhouette with a small transparent margin. The image should remain recognizable as this same girl even when reduced to 16 pixels. Genuinely transparent background, no scene, no text, no border, no watermark, no additional symbols. One square icon, not a sheet.",
-  "reference": "artwork/portrait.png",
+  "reference": "https://github.com/Lianye-Scythe/scythe-discards/blob/8f74ddc4c721f12ae62ba98f32dc264cfc31bbfd/artwork/portrait.png",
   "transparentBackground": true
 }

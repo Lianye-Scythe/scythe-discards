@@ -9,7 +9,7 @@ async page => {
   const t = (key, args = []) => messages[key].replace(/\$(\d)/g, (_m, position) => String(args[Number(position) - 1] ?? ''));
   const language = messages.languageTag.replaceAll('-', '_');
   const isTW = language === 'zh_TW';
-  const review = '.impeccable/review/v033-' + language + '-';
+  const review = 'artifacts/screenshots/v033-' + language + '-';
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   const record = name => { passed.push(name); console.log('UI PASS ' + name); };
