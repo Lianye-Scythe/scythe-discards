@@ -2,11 +2,11 @@
 
 Automatically unload inactive Chrome pages on a timer to help free RAM. Keep your tabs and URLs; pages reload when you return.
 
-**[Download latest](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [Installation](#installation) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
+**[Download latest](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [Install](#installation) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
 
 English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
 
-[![Release](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](LICENSE)
 
 <img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
 
