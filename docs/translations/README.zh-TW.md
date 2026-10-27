@@ -1,14 +1,12 @@
-# Scythe Discards
+# <img src="../images/icon.png" width="40" height="40" alt=""> Scythe Discards
+
+依設定的閒置時間自動卸載 Chrome 背景網頁，協助釋放記憶體（RAM）。保留分頁標籤與網址，切回時重新載入。
+
+**[下載最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安裝方式](#安裝方式) · [問題回報](https://github.com/Lianye-Scythe/scythe-discards/issues)
 
 [English](../../README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
 
-[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT 授權](../../LICENSE)
-
-在設定的閒置時間後，自動卸載 Chrome 背景網頁。保留分頁標籤與網址，切回時重新載入。
-
-適合習慣開啟大量分頁，並希望自行控制卸載時間與網站例外的使用者。
-
-**[下載最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安裝方式](#安裝方式) · [更多畫面](#更多畫面) · [問題回報](https://github.com/Lianye-Scythe/scythe-discards/issues)
+[![版本](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](../../LICENSE)
 
 <img src="../images/popup-zh-TW.png" width="300" alt="繁體中文小選單：自動卸載、目前分頁與網站保護">
 

@@ -1,14 +1,12 @@
-# Scythe Discards
+# <img src="docs/images/icon.png" width="40" height="40" alt=""> Scythe Discards
+
+Automatically unload inactive Chrome pages on a timer to help free RAM. Keep your tabs and URLs; pages reload when you return.
+
+**[Download latest](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [Installation](#installation) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
 
 English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
 
-[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT license](LICENSE)
-
-Automatically unload inactive Chrome pages after a chosen idle time. Keep your tabs and URLs; pages reload when you return.
-
-For people who keep many tabs open and want to choose their idle timeout and website exceptions.
-
-**[Download latest](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [Installation](#installation) · [More screenshots](#more-screenshots) · [Report a bug](https://github.com/Lianye-Scythe/scythe-discards/issues)
+[![Release](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](LICENSE)
 
 <img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
 
