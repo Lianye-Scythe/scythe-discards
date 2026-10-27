@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.4 — 2026-10-27
+
+- Make the current page title the popup heading, shorten supporting text and distinguish primary controls from their descriptions.
+- Clarify tab protection until Chrome restarts and website rules that remain saved after restarting, in all three interface languages.
+- Include the no-subdomains explanation in the website scope selector while retaining explicit domain targets and inherited rule sources.
+- Make All settings a full-width navigation row; keep the local-storage notice in the settings page.
+- Associate protection lifetime and scope explanations with the controls for assistive technology.
+- Refresh the three-language README screenshots and name browser-test captures using the installed extension version.
+
 ## 0.3.3 — 2026-10-26
 
 - Present inherited website protection with its rule source, a lock indicator and management action; keep scope selection available for explicit parent-rule changes.

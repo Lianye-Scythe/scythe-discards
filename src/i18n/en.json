@@ -151,10 +151,11 @@
   "currentAllowlisted": "Protected by a website exception",
   "currentStale": "Status needs updating",
   "currentManual": "This tab is manually protected",
-  "currentActive": "In use; kept loaded",
+  "currentActive": "In use",
   "protectThisTab": "Protect this tab",
   "untilRestart": "Until Chrome restarts",
-  "keepWebsite": "Keep website loaded",
+  "keepWebsite": "Protect this website",
+  "websiteProtectionHelp": "Kept after Chrome restarts",
   "protectionScope": "Website protection scope",
   "scopeHost": "Only $1",
   "scopeDomain": "$1 and subdomains",
@@ -190,10 +191,9 @@
   "reconnecting": "Reconnecting…",
   "staleData": "Showing data from $1. Reconnect to make changes.",
   "connectionNoData": "Status is not available yet. Reconnect to try again.",
-  "scopeHostLabel": "This website only",
-  "scopeHostHint": "Excludes subdomains.",
+  "scopeHostLabel": "Website only (no subdomains)",
   "scopeDomainLabel": "Domain and subdomains",
   "scopeTargetHost": "$1 only; no subdomains.",
   "scopeTargetDomain": "$1 and all subdomains.",
-  "keepWebsiteTarget": "Keep $1 loaded"
+  "keepWebsiteTarget": "Protect $1"
 }

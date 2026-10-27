@@ -151,10 +151,11 @@
   "currentAllowlisted": "網站白名單保護中",
   "currentStale": "狀態待更新",
   "currentManual": "已手動保護此分頁",
-  "currentActive": "使用中，暫不卸載",
+  "currentActive": "使用中",
   "protectThisTab": "保護此分頁",
-  "untilRestart": "保留到瀏覽器重啟",
-  "keepWebsite": "保留網站",
+  "untilRestart": "重啟前有效",
+  "keepWebsite": "保護此網站",
+  "websiteProtectionHelp": "重啟後仍保留",
   "protectionScope": "網站保護範圍",
   "scopeHost": "僅 $1",
   "scopeDomain": "$1 及子網域",
@@ -190,10 +191,9 @@
   "reconnecting": "重新連線中…",
   "staleData": "顯示 $1 取得的資料。重新連線後才能變更設定。",
   "connectionNoData": "尚未取得狀態，請重新連線。",
-  "scopeHostLabel": "僅此網站",
-  "scopeHostHint": "不包含子網域。",
+  "scopeHostLabel": "此網站（不含子網域）",
   "scopeDomainLabel": "主網域及子網域",
   "scopeTargetHost": "僅 $1，不含子網域。",
   "scopeTargetDomain": "$1 及其所有子網域。",
-  "keepWebsiteTarget": "保留 $1"
+  "keepWebsiteTarget": "保護 $1"
 }

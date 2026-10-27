@@ -25,6 +25,9 @@ function Popup() {
   const root = hostname ? rootDomainOf(hostname) : null;
   const allowed = !!data && matchesAllowlist(hostname, data.settings.allowlist);
   const protection = hostname ? protectionFor(hostname, scope, data?.settings.allowlist ?? []) : null;
+  const showScopeTarget = !!hostname && scope === 'domain' && !protection?.inherited;
+  const websiteDescription = 'popup-website-help' +
+    (protection?.inherited ? ' inherited-help' : showScopeTarget ? ' popup-scope-target' : '');
   const manuallyProtected = current?.manualProtected ?? false;
   const reason = state.connectionError ? t('currentStale') : !hostname ? t('currentUnsupported') : allowed ? t('currentAllowlisted') :
     manuallyProtected ? t('currentManual') : current?.reason === 'active' ? t('currentActive') : current ? reasonText(current.reason) : '';
@@ -54,9 +57,8 @@ function Popup() {
         <Switch id="popup-automation" checked={!!data && !data.settings.paused} disabled={!canAct}
           onCheckedChange={enabled => void act({ type: 'pause', paused: !enabled }, t(enabled ? 'noticeResumed' : 'noticePaused'))} />
       </div>
-      <section className="popup-current" aria-labelledby="current-heading">
-        <h2 id="current-heading" className="popup-section-heading">{t('currentTab')}</h2>
-        <p className="popup-title" id="popup-title" title={current?.title}>{current?.title || (!data ? t('loadingTabs') : t('currentUnavailable'))}</p>
+      <section className="popup-current" aria-label={t('currentTab')}>
+        <h2 className="popup-title" id="popup-title" title={current?.title}>{current?.title || (!data ? t('loadingTabs') : t('currentUnavailable'))}</h2>
         {data && <Hostname key={hostname} id="popup-host" value={hostname || 'Chrome'} />}
         {data && <p className={'current-reason' + (!state.connectionError && (allowed || manuallyProtected) ? ' is-protected' : '')}>
           {state.connectionError ? <Info size={15} aria-hidden="true" /> : <ShieldCheck size={15} aria-hidden="true" />}
@@ -66,8 +68,8 @@ function Popup() {
         <div className="popup-action-row">
           <ShieldCheck size={20} className="muted-icon" aria-hidden="true" />
           <div className="setting-copy"><label htmlFor="popup-protect" className="setting-title">{t('protectThisTab')}</label>
-            <p className="description">{t('untilRestart')}</p></div>
-          <Switch id="popup-protect" checked={manuallyProtected} disabled={!canAct || !hostname}
+            <p id="popup-protect-help" className="description">{t('untilRestart')}</p></div>
+          <Switch id="popup-protect" checked={manuallyProtected} disabled={!canAct || !hostname} aria-describedby="popup-protect-help"
             onCheckedChange={enabled => {
               if (current) void act({ type: 'protect', tabId: current.id, protected: enabled }, t(enabled ? 'noticeProtected' : 'noticeUnprotected'));
             }} />
@@ -77,15 +79,15 @@ function Popup() {
           <div className="setting-copy">
             {protection?.inherited ? <div id="popup-website-title" className="setting-title">{t('keepWebsite')}</div> :
               <label id="popup-website-title" htmlFor="popup-allow" className="setting-title">{t('keepWebsite')}</label>}
+            <p id="popup-website-help" className="description">{t('websiteProtectionHelp')}</p>
             <Select id="popup-scope" className="popup-scope" value={scope} disabled={!canAct || !hostname}
-              aria-label={t('protectionScope')} aria-describedby={hostname ? protection?.inherited ? 'inherited-help' : 'popup-scope-target' : undefined}
+              aria-label={t('protectionScope')} aria-describedby={websiteDescription}
               onChange={event => setScope(event.target.value as AllowScope)}>
               <option value="host">{t('scopeHostLabel')}</option>
               {root && <option value="domain">{t('scopeDomainLabel')}</option>}
             </Select>
-            {hostname && !protection?.inherited && <div className="scope-target" id="popup-scope-target">
-              {scope === 'host' ? <p className="description">{t('scopeHostHint')}</p> :
-                <Hostname value={protection?.target?.hostname ?? hostname} describe={value => t('scopeTargetDomain', [value])} />}
+            {showScopeTarget && <div className="scope-target" id="popup-scope-target">
+              <Hostname value={protection?.target?.hostname ?? hostname} describe={value => t('scopeTargetDomain', [value])} />
             </div>}
             {protection?.inherited && <div className="inherited-notice" id="inherited-help">
               <Hostname key={protection.inherited.id} value={protection.inherited.hostname}
@@ -96,7 +98,7 @@ function Popup() {
           {protection?.inherited ? <LockKeyhole size={18} className="inherited-lock" aria-hidden="true" /> :
             <Switch id="popup-allow" aria-label={hostname ? t('keepWebsiteTarget', [protection?.target?.hostname ?? hostname]) : t('keepWebsite')}
             checked={protection?.checked ?? false}
-            aria-describedby={hostname ? 'popup-scope-target' : undefined}
+            aria-describedby={websiteDescription}
             disabled={!canAct || !protection?.target}
             onCheckedChange={enabled => {
               if (!protection?.target) return;
@@ -108,8 +110,10 @@ function Popup() {
       {!hostname && data && <p className="popup-unsupported">{t('unsupportedActions')}</p>}
     </main>
     <Toast state={state} />
-    <footer className="popup-footer"><span className="description">{t('localOnly')}</span>
-      <Button variant="text" id="open-options" onClick={() => open()}><Settings2 size={16} aria-hidden="true" />{t('allSettings')}</Button>
+    <footer className="popup-footer">
+      <Button variant="text" id="open-options" onClick={() => open()}>
+        <Settings2 size={20} aria-hidden="true" /><span>{t('allSettings')}</span><ChevronRight size={16} aria-hidden="true" />
+      </Button>
     </footer>
   </>;
 }

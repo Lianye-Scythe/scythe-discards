@@ -7,6 +7,8 @@ export async function runUiRegressions(page) {
   const popupUrl = base.replace('options.html', 'popup.html');
   const language = await page.locator('html').getAttribute('lang');
   const suffix = language.replaceAll('-', '_'), isTW = suffix === 'zh_TW';
+  const version = await page.evaluate(() => chrome.runtime.getManifest().version);
+  const capturePrefix = 'artifacts/screenshots/v' + version + '-' + suffix + '-';
   const passed = [], screenshots = [], focusChecks = [], pageErrors = [], consoleErrors = [];
   const watch = target => {
     target.on('pageerror', error => pageErrors.push(error.message));
@@ -22,7 +24,7 @@ export async function runUiRegressions(page) {
     [key, chrome.i18n.getMessage(key, ['$1'])])), keys);
   const t = (key, value) => messages[key].replace('$1', value ?? '');
   const capture = async (target, name) => {
-    const path = 'artifacts/screenshots/v033-' + suffix + '-' + name + '.png';
+    const path = capturePrefix + name + '.png';
     await target.screenshot({ path }); screenshots.push(path);
   };
   const record = name => { passed.push(name); console.log('UI PASS ' + name); };
@@ -239,7 +241,7 @@ export async function runUiRegressions(page) {
     complete = true;
     return { passed, screenshots, focusChecks, pageErrors, consoleErrors };
   } finally {
-    if (!complete) await popup.screenshot({ path: 'artifacts/screenshots/v033-' + suffix + '-regression-failure.png' }).catch(() => {});
+    if (!complete) await popup.screenshot({ path: capturePrefix + 'regression-failure.png' }).catch(() => {});
     if (complete || !process.argv.includes('--keep-open')) {
       await editor.close(); await popup.close(); await fixture.close();
     }

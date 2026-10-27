@@ -1,25 +1,23 @@
 # Validation
 
-## v0.3.3 release baseline
+## v0.3.4
 
-The source repository is public. Ordinary Releases are automatically published after validation of the requested version tag; see the [Releases page](https://github.com/Lianye-Scythe/scythe-discards/releases) for available downloads. This summary describes the tested release baseline at commit `8f74ddc`, not a promise of broad browser or workload coverage.
+GitHub publication is gated by validation of the version tag. The [release workflow](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/release.yml) runs the same Windows/Linux matrix as [main-branch CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml), then builds and publishes the tagged source. See the [release](https://github.com/Lianye-Scythe/scythe-discards/releases/tag/v0.3.4) for downloads and the source commit.
 
-| Check | Recorded result |
+| Check | Scope |
 | --- | --- |
-| Type checking and core/i18n tests | Passed; 32 tests |
-| Linux Chrome for Testing | English, Traditional Chinese and Simplified Chinese each passed 8 API/lifecycle cases + 16 UI groups |
-| Windows Chrome for Testing | The same three-language matrix passed |
-| Installed Windows Chrome | Traditional Chinese passed the same 8 + 16 groups |
-| Release workflow | Both OS jobs and the initial draft creation passed; subsequent automated publication also passed |
-| Release ZIP | 19 files; SHA256SUMS verified; runtime matches both CI builds |
+| Local type checking and core/i18n tests | Passed; 32 tests |
+| Installed Windows Chrome 156.0.8078.48 | English, Traditional Chinese and Simplified Chinese each passed 8 API/lifecycle cases + 16 UI groups |
+| Release CI gate | The tagged commit must pass type checking, 32 tests and the same three-language browser suite on both Windows and Linux |
+| Popup inspection | Light/dark themes, 320px English scope selection, full-width settings navigation, keyboard focus and associated protection descriptions |
+| Release ZIP | 19 runtime/legal files; manifest version and SHA256SUMS verified locally; CI verifies its own package checksum before publication |
 
-Evidence: [main-branch CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40349873313) and [tag/release CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40350912938). Testing used isolated profiles. The CI browser was Chrome for Testing 156.0.8078.47; the separately installed Windows browser was 156.0.8078.48. Windows copies of text/HTML files differ only in line endings from the Linux release package.
+Screenshots use isolated Windows test profiles and fixture websites. The [image index](images/README.md) records their source; each README uses matching interface-language captures. Browser-test filenames use the extension's actual manifest version.
 
-These results cover the fixtures and interaction paths exercised. Real sleep/wake, long-term use, hundreds of real tabs, memory benefit, macOS and complete WCAG conformance remain outside the demonstrated scope. Reports are generated under the Git-ignored `artifacts/` directory, with current screenshots in `artifacts/screenshots/`, and retained as GitHub Actions artifacts according to the workflow policy.
+Tests exercise real discard/reload behavior, normal/strict protections, alarms and worker recovery, website scope and inherited protection, Undo, form/navigation state, theme changes, keyboard paths, long hostnames, connection/action failures and bounded activity pagination. The popup retains explicit domain targets and rule sources while reducing always-visible supporting text.
 
-## Checks after publication
+These results cover the fixtures and interaction paths exercised. Real sleep/wake, long-term use, hundreds of real tabs, memory benefit, macOS and complete WCAG conformance remain outside the demonstrated scope. The extension does not promise a fixed RAM ceiling or second-exact scheduling.
 
-- [Automated publication](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40419235002) validated the existing v0.3.3 tag and completed the public release with ZIP and checksum assets.
-- [Windows/Linux three-language CI](https://github.com/Lianye-Scythe/scythe-discards/actions/runs/40423142819) passed after activity-fixture setup was isolated from background writes. The fixture is checked before testing 50/50/25 pagination; production behavior was unchanged.
+Reports are generated under the Git-ignored `artifacts/` directory, with screenshots in `artifacts/screenshots/`, and retained as GitHub Actions artifacts according to the workflow policy. See the [test guide](../tests/README.md) for commands and fixture details.
 
-See the [changelog](../CHANGELOG.md) and release tags for earlier versions. The source tree keeps the current validation summary; earlier working records remain in Git history.
+Earlier validation summaries remain in Git history. The [changelog](../CHANGELOG.md) and release tags record previous versions.

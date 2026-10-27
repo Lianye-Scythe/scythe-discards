@@ -1,6 +1,6 @@
 {
   "name": "scythe-discards",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "type": "module",
   "description": "依閒置時間與白名單卸載 Chrome 背景分頁。",

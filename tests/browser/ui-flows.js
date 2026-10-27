@@ -4,12 +4,13 @@ async page => {
   const context = page.context();
   const base = page.url().split('#')[0];
   const extensionId = base.split('/')[2];
+  const version = await page.evaluate(() => chrome.runtime.getManifest().version);
   const keys = ['languageTag','navSettings','navAllowlist','navTabs','navActivity','settings','allowlist','tabs','activity','saved','cancelChanges','addWebsite','add','cancel','removeWebsite','errorInvalidHost','noticeChecked','scopeHost','scopeDomain','inheritedProtection','manageRule','noActivity','undo'];
   const messages = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, chrome.i18n.getMessage(key, ['$1','$2','$3'])])), keys);
   const t = (key, args = []) => messages[key].replace(/\$(\d)/g, (_m, position) => String(args[Number(position) - 1] ?? ''));
   const language = messages.languageTag.replaceAll('-', '_');
   const isTW = language === 'zh_TW';
-  const review = 'artifacts/screenshots/v033-' + language + '-';
+  const review = 'artifacts/screenshots/v' + version + '-' + language + '-';
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   const record = name => { passed.push(name); console.log('UI PASS ' + name); };

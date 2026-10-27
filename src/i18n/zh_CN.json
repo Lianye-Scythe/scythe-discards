@@ -151,10 +151,11 @@
   "currentAllowlisted": "网站白名单保护中",
   "currentStale": "状态待更新",
   "currentManual": "已手动保护此标签页",
-  "currentActive": "使用中，暂不卸载",
+  "currentActive": "使用中",
   "protectThisTab": "保护此标签页",
-  "untilRestart": "保留到浏览器重启",
-  "keepWebsite": "保留网站",
+  "untilRestart": "重启前有效",
+  "keepWebsite": "保护此网站",
+  "websiteProtectionHelp": "重启后仍保留",
   "protectionScope": "网站保护范围",
   "scopeHost": "仅 $1",
   "scopeDomain": "$1 及子域名",
@@ -190,10 +191,9 @@
   "reconnecting": "正在重新连接…",
   "staleData": "显示 $1 获取的数据。重新连接后才能更改设置。",
   "connectionNoData": "尚未获取状态，请重新连接。",
-  "scopeHostLabel": "仅此网站",
-  "scopeHostHint": "不包含子域名。",
+  "scopeHostLabel": "此网站（不含子域名）",
   "scopeDomainLabel": "主域名及子域名",
   "scopeTargetHost": "仅 $1，不含子域名。",
   "scopeTargetDomain": "$1 及其所有子域名。",
-  "keepWebsiteTarget": "保留 $1"
+  "keepWebsiteTarget": "保护 $1"
 }

@@ -271,6 +271,7 @@ input { caret-color: var(--primary); }
 .popup-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px 8px; flex-shrink: 0; }
 .popup-header .brand { gap: 10px; }
 .popup-header h1 { font-size: 19px; font-weight: 400; line-height: 24px; }
+.popup-body .setting-title { font-weight: 500; }
 .popup-feedback { flex-shrink: 0; padding: 0 20px 12px; }
 .popup-feedback:empty { padding: 0; }
 .popup-feedback > :not(:first-child) { margin-top: 8px; }
@@ -283,8 +284,7 @@ input { caret-color: var(--primary); }
 .popup-summary:hover { color: var(--primary); }
 .popup-automation { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .popup-automation .description { margin-top: 3px; }
-.popup-current { padding: 12px 0 8px; }
-.popup-section-heading { font-size: 12px; color: var(--muted); font-weight: 400; margin-bottom: 4px; }
+.popup-current { padding: 16px 0 12px; }
 .popup-title { font-size: 14px; font-weight: 500; line-height: 22px; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .hostname { overflow-wrap: anywhere; }
 .popup-current > .hostname { margin-top: 3px; }
@@ -312,9 +312,10 @@ input { caret-color: var(--primary); }
 .inherited-notice { margin-top: 4px; font-size: 12px; line-height: 18px; color: var(--muted); }
 .inherited-notice .button { min-height: 28px; padding: 3px 0; }
 .popup-unsupported { color: var(--muted); font-size: 12px; line-height: 18px; margin-bottom: 4px; }
-.popup-footer { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px 8px 20px; border-top: 1px solid var(--line); }
-.popup-footer > .description { min-width: 0; font-size: 11px; line-height: 16px; }
-.popup-footer .button { padding-inline: 8px; }
+.popup-footer { flex-shrink: 0; padding: 8px 12px; border-top: 1px solid var(--line); }
+.popup-footer .button { width: 100%; justify-content: flex-start; gap: 12px; padding-inline: 8px; border-radius: var(--radius-control); color: var(--ink); font-weight: 400; }
+.popup-footer .button > svg { color: var(--muted); }
+.popup-footer .button > svg:last-child { margin-left: auto; }
 .popup-body .toast-region { position: static; flex-shrink: 0; width: auto; max-width: none; padding: 0 12px 12px; transform: none; }
 .popup-body .toast-region:empty { padding: 0; }
 .popup-body .toast { font-size: 12px; padding-left: 12px; }

@@ -6,7 +6,7 @@ body:
     attributes:
       label: Versions and environment / 版本與環境
       description: Extension version, Chrome version and operating system.
-      placeholder: Scythe Discards 0.3.3 / Chrome version / Windows, Linux or macOS
+      placeholder: Scythe Discards 0.3.4 / Chrome version / Windows, Linux or macOS
     validations:
       required: true
   - type: textarea
