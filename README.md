@@ -1,4 +1,4 @@
-# <img src="docs/images/icon.png" width="40" height="40" alt=""> Scythe Discards
+# <img src="docs/images/icon.png" width="32" height="32" alt=""> Scythe Discards
 
 Automatically unload inactive Chrome pages on a timer to help free RAM. Keep your tabs and URLs; pages reload when you return.
 

@@ -1,4 +1,4 @@
-# <img src="../images/icon.png" width="40" height="40" alt=""> Scythe Discards
+# <img src="../images/icon.png" width="32" height="32" alt=""> Scythe Discards
 
 依設定的閒置時間自動卸載 Chrome 背景網頁，協助釋放記憶體（RAM）。保留分頁標籤與網址，切回時重新載入。
 
