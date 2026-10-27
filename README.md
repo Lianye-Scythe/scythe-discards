@@ -6,7 +6,7 @@ Automatically unload inactive Chrome pages on a timer to help free RAM. Keep you
 
 English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
 
-[![Release](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [![MIT](https://img.shields.io/github/license/Lianye-Scythe/scythe-discards)](LICENSE)
 
 <img src="docs/images/popup.png" width="300" alt="English popup showing automation, the current tab and website protection">
 

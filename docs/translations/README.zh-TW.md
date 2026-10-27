@@ -6,7 +6,7 @@
 
 [English](../../README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
 
-[![版本](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT](../../LICENSE)
+[![版本](https://img.shields.io/github/v/release/Lianye-Scythe/scythe-discards)](https://github.com/Lianye-Scythe/scythe-discards/releases/latest) · [![CI](https://img.shields.io/github/actions/workflow/status/Lianye-Scythe/scythe-discards/ci.yml?branch=main&label=CI)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [![MIT](https://img.shields.io/github/license/Lianye-Scythe/scythe-discards)](../../LICENSE)
 
 <img src="../images/popup-zh-TW.png" width="300" alt="繁體中文小選單：自動卸載、目前分頁與網站保護">
 
