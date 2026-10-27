@@ -1,10 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import en from '../src/i18n/en.json' with { type: 'json' };
-import tw from '../src/i18n/zh_TW.json' with { type: 'json' };
-import cn from '../src/i18n/zh_CN.json' with { type: 'json' };
-import { compileCatalog } from '../src/i18n/catalog.ts';
-import { activityText, formatError, t } from '../src/i18n/index.ts';
+import en from '../../src/i18n/en.json' with { type: 'json' };
+import tw from '../../src/i18n/zh_TW.json' with { type: 'json' };
+import cn from '../../src/i18n/zh_CN.json' with { type: 'json' };
+import { compileCatalog } from '../../src/i18n/catalog.ts';
+import { activityText, formatError, t } from '../../src/i18n/index.ts';
 
 test('三語 keys 與參數一致，所有 Chrome 訊息名稱合法', () => {
   for (const catalog of [tw, cn]) {

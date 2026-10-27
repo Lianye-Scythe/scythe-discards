@@ -1,6 +1,6 @@
 # Scythe Discards
 
-English · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
+English · [繁體中文](docs/translations/README.zh-TW.md) · [简体中文](docs/translations/README.zh-CN.md)
 
 [![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT license](LICENSE)
 
@@ -96,6 +96,7 @@ The extension uses URLs and tab metadata locally. Read the [privacy policy](PRIV
 Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS. The background worker does not load React; dependencies are exact-pinned.
 
 - [Contributing and test commands](CONTRIBUTING.md)
+- [Documentation index and repository layout](docs/README.md)
 - [Validation results and limitations](docs/VALIDATION.md) · [Changelog](CHANGELOG.md)
 - [Release process](docs/PUBLISHING.md) · [Translation maintenance](docs/I18N.md)
 - [Technical plan](docs/PLAN.md) · [Design notes](DESIGN.md) (Traditional Chinese)

@@ -1,8 +1,8 @@
 # Scythe Discards
 
-[English](README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
+[English](../../README.md) · 繁體中文 · [简体中文](README.zh-CN.md)
 
-[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT 授權](LICENSE)
+[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT 授權](../../LICENSE)
 
 在設定的閒置時間後，自動卸載 Chrome 背景網頁。保留分頁標籤與網址，切回時重新載入。
 
@@ -10,7 +10,7 @@
 
 **[下載最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安裝方式](#安裝方式) · [更多畫面](#更多畫面) · [問題回報](https://github.com/Lianye-Scythe/scythe-discards/issues)
 
-<img src="docs/images/popup-zh-TW.png" width="300" alt="繁體中文小選單：自動卸載、目前分頁與網站保護">
+<img src="../images/popup-zh-TW.png" width="300" alt="繁體中文小選單：自動卸載、目前分頁與網站保護">
 
 ## 安裝方式
 
@@ -52,9 +52,9 @@ npm run build
 <details>
 <summary>網站規則來源與設定頁</summary>
 
-<img src="docs/images/popup-inherited-zh-TW.png" width="300" alt="繼承保護：顯示規則來源與管理入口">
+<img src="../images/popup-inherited-zh-TW.png" width="300" alt="繼承保護：顯示規則來源與管理入口">
 
-![繁體中文設定頁](docs/images/settings-zh-TW.png)
+![繁體中文設定頁](../images/settings-zh-TW.png)
 
 </details>
 
@@ -71,7 +71,7 @@ npm run build
 
 僅保護 `docs.example.com` 的規則不涵蓋 `mail.example.com`；將 `example.com` 設為包含子網域，則會保護兩者。
 
-不保證固定 RAM 上限或精確到秒執行；記憶體效益取決於實際使用情境，詳見[驗證結果與限制](docs/VALIDATION.md)。
+不保證固定 RAM 上限或精確到秒執行；記憶體效益取決於實際使用情境，詳見[驗證結果與限制](../VALIDATION.md)。
 
 ## 更新
 
@@ -89,15 +89,16 @@ npm run build
 | `storage` | 在本機儲存設定與有限的工作階段狀態 |
 | `alarms` | 檢查逾時，不為每個分頁維持常駐計時器 |
 
-擴充功能會在本機使用網址與分頁資訊；儲存及保留方式詳見[隱私權政策](PRIVACY.md)。
+擴充功能會在本機使用網址與分頁資訊；儲存及保留方式詳見[隱私權政策](../../PRIVACY.md)。
 
 ## 開發與文件
 
 Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS。背景服務不載入 React，依賴固定精確版本。
 
-- [參與開發與測試指令](CONTRIBUTING.md)
-- [驗證結果與限制](docs/VALIDATION.md) · [版本紀錄](CHANGELOG.md)
-- [發佈流程](docs/PUBLISHING.md) · [翻譯維護](docs/I18N.md)
-- [技術規劃](docs/PLAN.md) · [設計筆記](DESIGN.md)
+- [參與開發與測試指令](../../CONTRIBUTING.md)
+- [文件索引與專案結構](../README.md)
+- [驗證結果與限制](../VALIDATION.md) · [版本紀錄](../../CHANGELOG.md)
+- [發佈流程](../PUBLISHING.md) · [翻譯維護](../I18N.md)
+- [技術規劃](../PLAN.md) · [設計筆記](../../DESIGN.md)
 
-採用 [MIT 授權](LICENSE)，第三方元件保留各自的[授權聲明](THIRD_PARTY_NOTICES.md)。
+採用 [MIT 授權](../../LICENSE)，第三方元件保留各自的[授權聲明](../../THIRD_PARTY_NOTICES.md)。

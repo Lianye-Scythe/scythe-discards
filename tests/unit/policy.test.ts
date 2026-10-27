@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { DEFAULT_SETTINGS } from '../src/core/model.ts';
-import type { Settings, TabInfo } from '../src/core/model.ts';
-import { decide, matchesAllowlist, normalizeHostname, readSettings, reconcileTabs, retryDelay, rootDomainOf, usedTabIds } from '../src/core/policy.ts';
-import { protectionFor } from '../src/core/allowlist.ts';
+import { DEFAULT_SETTINGS } from '../../src/core/model.ts';
+import type { Settings, TabInfo } from '../../src/core/model.ts';
+import { decide, matchesAllowlist, normalizeHostname, readSettings, reconcileTabs, retryDelay, rootDomainOf, usedTabIds } from '../../src/core/policy.ts';
+import { protectionFor } from '../../src/core/allowlist.ts';
 
 const normal: Settings = structuredClone(DEFAULT_SETTINGS);
 const strict: Settings = { ...normal, mode: 'strict' };

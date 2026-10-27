@@ -14,7 +14,7 @@ try {
   New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
   $outputLog = Join-Path $logDirectory 'windows-stdout.log'
   $errorLog = Join-Path $logDirectory 'windows-stderr.log'
-  $process = Start-Process -FilePath $NodeExecutable -ArgumentList @('tests/browser.mjs', '--ui', "--locale=$Locale") -WorkingDirectory $Workspace -NoNewWindow -PassThru -Wait -RedirectStandardOutput $outputLog -RedirectStandardError $errorLog
+  $process = Start-Process -FilePath $NodeExecutable -ArgumentList @('tests/browser/run.mjs', '--ui', "--locale=$Locale") -WorkingDirectory $Workspace -NoNewWindow -PassThru -Wait -RedirectStandardOutput $outputLog -RedirectStandardError $errorLog
   $testExitCode = $process.ExitCode
   Get-Content $outputLog -Encoding utf8
   Get-Content $errorLog -Encoding utf8

@@ -20,7 +20,7 @@ web
 
 ## Operating Context
 
-工具列 popup 用於目前分頁的快捷操作；設定頁用於調整時間、模式、網站白名單與檢視分頁狀態。v0.3.2 為可載入的本機預覽版，備妥 GitHub CI、MIT 授權與發佈文件。
+工具列 popup 用於目前分頁的快捷操作；設定頁用於調整時間、模式、網站白名單與檢視分頁狀態。v0.3.3 已作為 GitHub 正式版本公開，Windows／Linux 三語 CI 與自動發布流程均已驗證；授權為 MIT。
 
 ## Capabilities and Constraints
 

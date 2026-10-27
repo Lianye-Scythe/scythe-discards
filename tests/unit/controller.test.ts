@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { Controller } from '../src/core/controller.ts';
-import type { BrowserAdapter } from '../src/core/controller.ts';
-import { DEFAULT_SETTINGS } from '../src/core/model.ts';
-import type { Session, Settings, TabInfo } from '../src/core/model.ts';
+import { Controller } from '../../src/core/controller.ts';
+import type { BrowserAdapter } from '../../src/core/controller.ts';
+import { DEFAULT_SETTINGS } from '../../src/core/model.ts';
+import type { Session, Settings, TabInfo } from '../../src/core/model.ts';
 
 class FakeBrowser implements BrowserAdapter {
   settings: Settings = { ...structuredClone(DEFAULT_SETTINGS), mode: 'strict', timeoutMinutes: 1 };

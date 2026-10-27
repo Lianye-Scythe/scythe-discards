@@ -6,7 +6,7 @@ import { resolve, join } from 'node:path';
 import assert from 'node:assert/strict';
 import { runUiRegressions } from './ui-regressions.mjs';
 
-const root = resolve(import.meta.dirname, '..');
+const root = resolve(import.meta.dirname, '../..');
 const artifacts = resolve(root, 'artifacts');
 const language = process.argv.find(arg => arg.startsWith('--locale='))?.slice(9) || 'zh-TW';
 const localeSuffix = language.replaceAll('-', '_');
@@ -229,7 +229,7 @@ try {
       extensionId, optionsUrl: options.url(), profile, base, optionsTabId: (await tabFor(options)).id }, null, 2));
     if (process.argv.includes('--ui')) {
       stage = 'React 介面流程';
-      const source = await readFile(resolve(root, 'tests/ui-flows.js'), 'utf8');
+      const source = await readFile(resolve(import.meta.dirname, 'ui-flows.js'), 'utf8');
       const runFlow = new Function('return (' + source + ')')();
       const ui = await runFlow(options);
       stage = '介面邊界案例';

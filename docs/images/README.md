@@ -8,4 +8,4 @@ These are unedited screenshots of Scythe Discards v0.3.3 using isolated Windows 
 | Traditional Chinese | Corresponding `*-zh-TW.png` files | Installed Windows Chrome 156.0.8078.48, local validation |
 | Simplified Chinese | Corresponding `*-zh-CN.png` files | Windows Chrome for Testing 156.0.8078.47, the same GitHub CI run |
 
-The originals were captured by `tests/browser.mjs` and `tests/ui-flows.js` during the validation recorded in [VALIDATION.md](../VALIDATION.md). Each language README uses matching interface captures. Regenerate with the same fixtures when the interface changes; keep screenshots free of everyday browsing data.
+The originals come from the validation recorded in [VALIDATION.md](../VALIDATION.md). The capture runner and UI fixtures are now maintained in `tests/browser/run.mjs` and `tests/browser/ui-flows.js`; see the [test guide](../../tests/README.md). Each language README uses matching interface captures. Regenerate with the same fixtures when the interface changes; keep screenshots free of everyday browsing data.

@@ -10,11 +10,11 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "tsc --noEmit",
-    "test": "node --test tests/*.test.ts",
+    "test": "node --test tests/unit/*.test.ts",
     "test:setup": "node scripts/install-test-browser.mjs",
-    "test:browser": "node tests/browser.mjs",
+    "test:browser": "node tests/browser/run.mjs",
     "package": "npm run build && node scripts/package.mjs",
-    "test:ui": "node tests/browser.mjs --ui",
+    "test:ui": "node tests/browser/run.mjs --ui",
     "test:locales": "node scripts/test-locales.mjs"
   },
   "packageManager": "npm@12.2.1",

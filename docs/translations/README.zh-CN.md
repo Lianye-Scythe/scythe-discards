@@ -1,8 +1,8 @@
 # Scythe Discards
 
-[English](README.md) · [繁體中文](README.zh-TW.md) · 简体中文
+[English](../../README.md) · [繁體中文](README.zh-TW.md) · 简体中文
 
-[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT 授权](LICENSE)
+[![CI](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml/badge.svg)](https://github.com/Lianye-Scythe/scythe-discards/actions/workflows/ci.yml) · [MIT 授权](../../LICENSE)
 
 在设定的闲置时间后，自动卸载 Chrome 后台网页。保留标签页和网址，切回时重新加载。
 
@@ -10,7 +10,7 @@
 
 **[下载最新版](https://github.com/Lianye-Scythe/scythe-discards/releases/latest)** · [安装方式](#安装方式) · [更多截图](#更多截图) · [问题反馈](https://github.com/Lianye-Scythe/scythe-discards/issues)
 
-<img src="docs/images/popup-zh-CN.png" width="300" alt="简体中文小窗口：自动卸载、当前标签页和网站保护">
+<img src="../images/popup-zh-CN.png" width="300" alt="简体中文小窗口：自动卸载、当前标签页和网站保护">
 
 ## 安装方式
 
@@ -52,9 +52,9 @@ npm run build
 <details>
 <summary>网站规则来源和设置页</summary>
 
-<img src="docs/images/popup-inherited-zh-CN.png" width="300" alt="继承保护：显示规则来源和管理入口">
+<img src="../images/popup-inherited-zh-CN.png" width="300" alt="继承保护：显示规则来源和管理入口">
 
-![简体中文设置页](docs/images/settings-zh-CN.png)
+![简体中文设置页](../images/settings-zh-CN.png)
 
 </details>
 
@@ -71,7 +71,7 @@ npm run build
 
 仅保护 `docs.example.com` 的规则不覆盖 `mail.example.com`；将 `example.com` 设为包含子域名，则会保护两者。
 
-不保证固定 RAM 上限或精确到秒执行；内存效果取决于实际使用场景，参阅[验证结果与限制](docs/VALIDATION.md)。
+不保证固定 RAM 上限或精确到秒执行；内存效果取决于实际使用场景，参阅[验证结果与限制](../VALIDATION.md)。
 
 ## 更新
 
@@ -89,15 +89,16 @@ npm run build
 | `storage` | 在本机保存设置和有限的会话状态 |
 | `alarms` | 检查超时，无需为每个标签页维持常驻计时器 |
 
-扩展会在本机使用网址和标签页信息；存储和保留方式参阅[隐私政策](PRIVACY.md)。
+扩展会在本机使用网址和标签页信息；存储和保留方式参阅[隐私政策](../../PRIVACY.md)。
 
 ## 开发与文档
 
 Chrome Manifest V3 · TypeScript · React · Radix UI · Tailwind CSS。后台服务不加载 React，依赖锁定精确版本。
 
-- [参与开发和测试命令](CONTRIBUTING.md)
-- [验证结果与限制](docs/VALIDATION.md) · [更新记录](CHANGELOG.md)
-- [发布流程](docs/PUBLISHING.md) · [翻译维护](docs/I18N.md)
-- [技术规划](docs/PLAN.md) · [设计笔记](DESIGN.md)（繁体中文）
+- [参与开发和测试命令](../../CONTRIBUTING.md)
+- [文档索引和项目结构](../README.md)
+- [验证结果与限制](../VALIDATION.md) · [更新记录](../../CHANGELOG.md)
+- [发布流程](../PUBLISHING.md) · [翻译维护](../I18N.md)
+- [技术规划](../PLAN.md) · [设计笔记](../../DESIGN.md)（繁体中文）
 
-采用 [MIT 授权](LICENSE)，第三方组件保留各自的[授权声明](THIRD_PARTY_NOTICES.md)。
+采用 [MIT 授权](../../LICENSE)，第三方组件保留各自的[授权声明](../../THIRD_PARTY_NOTICES.md)。
