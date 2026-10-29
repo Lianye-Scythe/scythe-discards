@@ -27,7 +27,7 @@ for (const [directory, info] of Object.entries(lock.packages)) {
 }
 await writeFile(resolve(dist, 'THIRD_PARTY_NOTICES.txt'), notices.join('\n'));
 const manifest = JSON.parse(await readFile(resolve(root, 'public/manifest.json'), 'utf8'));
-await copyFile(resolve(root, 'LICENSE'), resolve(dist, 'LICENSE'));
+await copyFile(resolve(root, 'LICENSE'), resolve(dist, 'LICENSE.txt'));
 manifest.version = pkg.version;
 manifest.name = '__MSG_extensionName__';
 manifest.short_name = PRODUCT_NAME;

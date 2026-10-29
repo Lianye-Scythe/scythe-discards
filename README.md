@@ -43,16 +43,19 @@ Defaults: **Normal mode · 30 minutes · System theme**. Returning to an unloade
 - **Quick controls:** pause automation, protect a tab, add or remove website rules, and undo removals.
 - **Clear state:** see protection sources, timeouts, recent activity and connection errors.
 - **Local history:** at most 200 session events, displayed 50 per page, with a clear action.
+- **Project resources:** About includes the installed version, support links and manual ZIP update instructions.
 - **Three languages and two themes:** English, Traditional Chinese and Simplified Chinese follow Chrome's language; appearance follows the system or your light/dark choice.
 
 ## More screenshots
 
 <details>
-<summary>Website rule sources and the settings page</summary>
+<summary>Website rule sources, settings and About</summary>
 
 <img src="docs/images/popup-inherited.png" width="300" alt="Inherited website protection showing its rule source and management action">
 
 ![English settings page](docs/images/settings.png)
+
+![English About page](docs/images/about.png)
 
 </details>
 

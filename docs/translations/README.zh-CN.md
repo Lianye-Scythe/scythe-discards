@@ -43,16 +43,19 @@ npm run build
 - **快捷操作：** 暂停自动卸载、保护标签页、增删网站规则，以及撤销移除。
 - **清晰状态：** 显示保护来源、倒计时、近期记录和连接错误。
 - **有限记录：** 保留本次会话最新 200 条，每页 50 条，可清除。
+- **关于与支持：** 集中版本、项目链接、问题反馈与 ZIP 手动更新说明。
 - **三语和深浅色：** 英语、繁体中文、简体中文跟随 Chrome 语言；外观可跟随系统或手动选择。
 
 ## 更多截图
 
 <details>
-<summary>网站规则来源和设置页</summary>
+<summary>网站规则来源、设置和关于页面</summary>
 
 <img src="../images/popup-inherited-zh-CN.png" width="300" alt="继承保护：显示规则来源和管理入口">
 
 ![简体中文设置页](../images/settings-zh-CN.png)
+
+![简体中文关于页面](../images/about-zh-CN.png)
 
 </details>
 

@@ -153,6 +153,8 @@ input { caret-color: var(--primary); }
 .nav-link { min-height: 44px; padding: 10px 24px; display: flex; align-items: center; gap: 20px; color: var(--muted); border-radius: 0 24px 24px 0; font-size: 14px; }
 .nav-link:hover { background: var(--hover); }
 .nav-link[aria-current="page"] { color: var(--on-selected); background: var(--selected); font-weight: 500; }
+.nav-link-about { margin-top: 12px; }
+.nav-label-compact { display: none; }
 .nav-link:focus-visible, .link-row:focus-visible { outline-offset: -2px; }
 .sidebar-footer { display: flex; align-items: flex-start; gap: 10px; margin-top: auto; padding: 24px 16px 0 24px; font-size: 12px; line-height: 20px; color: var(--muted); }
 .sidebar-footer svg { margin-top: 2px; }
@@ -197,6 +199,27 @@ input { caret-color: var(--primary); }
 .message-warning { color: var(--warning); background: var(--warning-bg); }
 .global-feedback .message + .message { margin-top: 12px; }
 .message .button { padding-inline: 0; margin-top: 4px; min-height: 28px; color: inherit; }
+
+/* About and project resources. All resources are local or user-opened links. */
+.about-product { display: flex; align-items: center; gap: 16px; }
+.about-product > div { min-width: 0; }
+.about-product h2 { font-size: 20px; font-weight: 400; line-height: 28px; overflow-wrap: anywhere; }
+.about-product .description { margin-top: 2px; }
+.about-intro { margin-top: 16px; margin-bottom: 28px; }
+.about-link { min-height: 52px; font-size: 14px; border-radius: var(--radius-panel); }
+.about-link + .about-link { border-top: 1px solid var(--line); }
+.about-links > .about-link:not(:first-child) { border-top-left-radius: 0; border-top-right-radius: 0; }
+.about-links > .about-link:not(:last-child) { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.about-update-guide { margin-top: 12px; font-size: 13px; line-height: 20px; }
+.about-update-guide > summary { display: flex; align-items: center; gap: 8px; width: fit-content; max-width: 100%; min-height: 32px; padding: 4px 2px; color: var(--primary); cursor: pointer; list-style: none; border-radius: 2px; }
+.about-update-guide > summary::-webkit-details-marker { display: none; }
+.about-update-guide[open] > summary > svg { transform: rotate(180deg); }
+.about-update-guide > div { padding: 8px 2px 0; color: var(--muted); overflow-wrap: anywhere; }
+.about-update-guide ol { margin: 8px 0; padding-left: 22px; list-style: decimal; }
+.about-update-guide li + li { margin-top: 6px; }
+.about-text-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 8px; }
+.about-text-link { display: inline-flex; align-items: center; min-height: 32px; color: var(--primary); border-radius: 2px; font-size: 13px; overflow-wrap: anywhere; }
+.about-text-link:hover, .about-update-guide > summary:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Website exceptions. */
 .allow-editor { padding: 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--hover); }
@@ -323,7 +346,8 @@ input { caret-color: var(--primary); }
 @media (max-width: 920px) {
   .app-header { padding-inline: 20px; }
   .sidebar { position: sticky; top: 64px; width: 100%; height: 64px; padding: 0 12px 8px; background: var(--app-bg); z-index: 15; }
-  .sidebar nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 0; }
+  .sidebar nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; padding: 0; }
+  .nav-link-about { margin-top: 0; }
   .nav-link { min-height: 52px; padding: 8px 4px; gap: 3px; flex-direction: column; justify-content: center; border-radius: 12px; font-size: 12px; line-height: 18px; white-space: nowrap; }
   .nav-link svg { width: 18px; height: 18px; }
   .sidebar-footer { display: none; }
@@ -332,6 +356,8 @@ input { caret-color: var(--primary); }
   .global-feedback { padding-bottom: 0; }
 }
 @media (max-width: 620px) {
+  .nav-label-full { display: none; }
+  .nav-label-compact { display: inline; }
   .page, .page-wide, .global-feedback { width: calc(100% - 32px); }
   .page-heading { margin-bottom: 24px; }
   .page-heading h1 { font-size: 20px; line-height: 28px; }

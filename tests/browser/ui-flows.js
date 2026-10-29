@@ -5,7 +5,7 @@ async page => {
   const base = page.url().split('#')[0];
   const extensionId = base.split('/')[2];
   const version = await page.evaluate(() => chrome.runtime.getManifest().version);
-  const keys = ['languageTag','navSettings','navAllowlist','navTabs','navActivity','settings','allowlist','tabs','activity','saved','cancelChanges','addWebsite','add','cancel','removeWebsite','errorInvalidHost','noticeChecked','scopeHost','scopeDomain','inheritedProtection','manageRule','noActivity','undo'];
+  const keys = ['languageTag','navSettings','navAllowlist','navTabs','navActivity','navAbout','aboutLatest','openInNewTab','settings','allowlist','tabs','activity','saved','cancelChanges','addWebsite','add','cancel','removeWebsite','errorInvalidHost','noticeChecked','scopeHost','scopeDomain','inheritedProtection','manageRule','noActivity','undo'];
   const messages = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, chrome.i18n.getMessage(key, ['$1','$2','$3'])])), keys);
   const t = (key, args = []) => messages[key].replace(/\$(\d)/g, (_m, position) => String(args[Number(position) - 1] ?? ''));
   const language = messages.languageTag.replaceAll('-', '_');
@@ -24,6 +24,7 @@ async page => {
     { id: 'allowlist', nav: 'navAllowlist', title: 'allowlist' },
     { id: 'tabs', nav: 'navTabs', title: 'tabs' },
     { id: 'activity', nav: 'navActivity', title: 'activity' },
+    { id: 'about', nav: 'navAbout', title: 'navAbout' },
   ];
   const [settings, allowlist, tabs, activity] = routes;
   const navigate = async route => {
@@ -126,6 +127,52 @@ async page => {
   await page.waitForFunction(() => document.documentElement.dataset.theme === 'system');
   record('system theme and manual override');
 
+  const about = routes[4];
+  const savedSettings = (await rpc({ type: 'snapshot' })).settings;
+  await page.locator('#timeout').fill('23'); await navigate(about);
+  await page.waitForFunction(() => document.activeElement === document.querySelector('#about-page h1'));
+  assert((await page.locator('#about-version').innerText()).includes(version), 'About version differs from manifest');
+  await page.goBack(); await page.locator('#timeout').waitFor();
+  assert(await page.locator('#timeout').inputValue() === '23', 'About navigation lost the settings draft');
+  await page.goForward(); await page.locator('#about-page').waitFor(); await page.reload();
+  await page.locator('.sidebar a[aria-current="page"][href="#about"]').waitFor();
+  const guide = page.locator('.about-update-guide > summary'); await guide.focus(); await guide.press('Enter');
+  await page.locator('.about-update-guide[open]').waitFor();
+  assert((await page.locator('.about-update-guide').innerText()).includes('chrome://extensions'), 'ZIP update guide is missing');
+  await guide.press('Enter');
+  const localRequests = [];
+  const observeRequest = request => { if (/^https?:/.test(request.url())) localRequests.push(request.url()); };
+  page.on('request', observeRequest); await page.reload(); await page.locator('#about-version').waitFor();
+  page.off('request', observeRequest);
+  assert(localRequests.length === 0, 'About page contacted an external service');
+  const latest = page.getByRole('link', { name: t('openInNewTab', [t('aboutLatest')]), exact: true });
+  const interceptGitHub = route => route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Release fixture</title>' });
+  await context.route('https://github.com/**', interceptGitHub);
+  try {
+    const [release] = await Promise.all([context.waitForEvent('page'), latest.click()]);
+    await release.waitForLoadState();
+    assert(release.url() === 'https://github.com/Lianye-Scythe/scythe-discards/releases/latest', 'Latest release link has the wrong destination');
+    assert(await release.evaluate(() => window.opener === null), 'External resource retained an opener');
+    await release.close();
+  } finally { await context.unroute('https://github.com/**', interceptGitHub); }
+  const [license] = await Promise.all([context.waitForEvent('page'), page.locator('#about-license').click()]);
+  await license.waitForLoadState();
+  assert((await license.locator('body').innerText()).includes('MIT License'), 'Bundled license cannot be read');
+  await license.close();
+  assert(JSON.stringify((await rpc({ type: 'snapshot' })).settings) === JSON.stringify(savedSettings), 'About changed stored settings');
+  record('About route, history, focus, local version, update guide and resource links');
+
+  const disconnected = await context.newPage();
+  disconnected.on('pageerror', error => errors.push(error.message));
+  await disconnected.addInitScript(() => { chrome.runtime.sendMessage = async () => { throw new Error('Isolated About transport fixture'); }; });
+  await disconnected.goto(base + '#about');
+  await disconnected.locator('#running-status[data-state="unavailable"]').waitFor();
+  assert((await disconnected.locator('#about-version').innerText()).includes(version), 'About version depends on the background connection');
+  assert(await disconnected.locator('#about-latest').getAttribute('href') === 'https://github.com/Lianye-Scythe/scythe-discards/releases/latest', 'Offline About lost its resource links');
+  if (isTW) await capture(disconnected, 'about-offline');
+  await disconnected.close(); await page.bringToFront();
+  record('About metadata and resources remain available without a background connection');
+
   const notes = context.pages().find(item => item.url().endsWith('/notes') && !item.isClosed());
   assert(notes, 'Missing notes fixture');
   const fixturePort = new URL(notes.url()).port;
@@ -217,16 +264,28 @@ async page => {
   // One batched capture round for the supported languages and changed surfaces.
   await page.setViewportSize({ width: 1440, height: 1000 }); await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
   await navigate(settings); await capture(page, 'desktop');
+  await navigate(about); await capture(page, 'about-desktop');
+  await page.emulateMedia({ colorScheme: 'dark' }); await capture(page, 'about-dark');
+  await page.emulateMedia({ colorScheme: 'light' });
   if (language === 'en' || isTW) { await navigate(tabs); await capture(page, 'desktop-tabs'); }
   if (isTW) { await navigate(settings); await page.emulateMedia({ colorScheme: 'dark' }); await capture(page, 'desktop-dark');
     await page.locator('#mode-strict').click(); await capture(page, 'desktop-strict'); await page.getByRole('button', { name: t('cancelChanges'), exact: true }).click(); }
-  for (const width of [620, 380]) {
+  for (const width of [620, 380, 320]) {
     await page.setViewportSize({ width, height: 1000 }); await page.emulateMedia({ colorScheme: 'light' });
     for (const route of routes) {
       await navigate(route);
       const metrics = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: innerWidth }));
       assert(metrics.scroll <= metrics.viewport, 'Overflow: ' + width + ', ' + route.id + ', ' + JSON.stringify(metrics));
       overflowChecks.push({ width, route: route.id, passed: true });
+      if (route.id === 'about') {
+        const labelsFit = await page.locator('.sidebar .nav-link').evaluateAll(links => links.every(link =>
+          [...link.querySelectorAll('span')].filter(span => getComputedStyle(span).display !== 'none').every(span => {
+            const a = link.getBoundingClientRect(), b = span.getBoundingClientRect();
+            return b.left >= a.left && b.right <= a.right && span.scrollWidth <= span.clientWidth;
+          })));
+        assert(labelsFit, 'Five-item navigation labels do not fit at ' + width);
+        if (width === 320) await capture(page, 'about-mobile');
+      }
       if (route.id === 'settings' && (width === 380 || isTW)) await capture(page, width === 380 ? 'mobile' : 'tablet');
       if (width === 380 && route.id === 'tabs' && (language === 'en' || isTW)) await capture(page, 'mobile-tabs');
       if (isTW && width === 380 && route.id === 'allowlist') {

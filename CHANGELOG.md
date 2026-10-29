@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.5 — 2026-10-29
+
+- Add About as the fifth settings destination, with the installed version, maintainer, project, support, release and privacy links.
+- Keep About metadata and resources available when the background service is disconnected; resource links open safely in new tabs.
+- Provide an expandable manual ZIP update guide and readable bundled MIT and third-party license notices.
+- Adapt all five navigation items to narrow windows with compact localized labels and full accessible names.
+- Extend three-language browser coverage for About navigation, history, draft retention, keyboard use, resource links and 320px reflow.
+
 ## 0.3.4 — 2026-10-27
 
 - Make the current page title the popup heading, shorten supporting text and distinguish primary controls from their descriptions.

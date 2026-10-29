@@ -16,7 +16,8 @@ Maintain token values in the stylesheet rather than duplicating a generated toke
 
 ## Layout and controls
 
-- Keep the four options destinations functional, including reload and browser history. Use a compact settings column and a wider tab list where comparison needs space.
+- Keep all five options destinations functional, including reload and browser history. About follows Activity with a small desktop gap; narrow navigation uses five columns and compact labels without changing their accessible names. Use a compact settings column and a wider tab list where comparison needs space.
+- About reads its version from the manifest, remains usable without a background connection, and opens project resources in new tabs. View latest release opens GitHub; ZIP updates remain manual. Keep licenses available from bundled files and network requests out of the page itself.
 - Keep popup controls within its 360px column. Long content scrolls independently from the header, recovery controls, notifications and footer.
 - Policy edits use explicit save/cancel actions. Website rules, pause and theme changes apply immediately and show their result.
 - Show the exact website scope. Inherited protection uses a lock, source rule and management action. Long hostnames can be expanded with a keyboard to read and select the full value.

@@ -3,19 +3,21 @@ import { initializeLocale, t } from '../i18n/index.ts';
 initializeLocale();
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HardDrive, History, Layers, Settings2, ShieldCheck } from 'lucide-react';
+import { HardDrive, History, Info, Layers, Settings2, ShieldCheck } from 'lucide-react';
 import { useExtension } from './use-extension.ts';
 import { BackgroundError, ConnectionError, RunningStatus, Toast } from './components/feedback.tsx';
 import { SettingsPage } from './pages/settings.tsx';
 import { AllowlistPage } from './pages/allowlist.tsx';
 import { TabsPage } from './pages/tabs.tsx';
 import { ActivityPage } from './pages/activity.tsx';
+import { AboutPage } from './pages/about.tsx';
 
 const destinations = [
-  { id: 'settings', label: t('navSettings'), Icon: Settings2 },
-  { id: 'allowlist', label: t('navAllowlist'), Icon: ShieldCheck },
-  { id: 'tabs', label: t('navTabs'), Icon: Layers },
-  { id: 'activity', label: t('navActivity'), Icon: History },
+  { id: 'settings', label: t('navSettings'), compactLabel: t('navSettingsCompact'), Icon: Settings2 },
+  { id: 'allowlist', label: t('navAllowlist'), compactLabel: t('navAllowlistCompact'), Icon: ShieldCheck },
+  { id: 'tabs', label: t('navTabs'), compactLabel: t('navTabsCompact'), Icon: Layers },
+  { id: 'activity', label: t('navActivity'), compactLabel: t('navActivityCompact'), Icon: History },
+  { id: 'about', label: t('navAbout'), compactLabel: t('navAbout'), Icon: Info },
 ] as const;
 type Route = typeof destinations[number]['id'];
 
@@ -54,9 +56,10 @@ function App() {
     </header>
     <aside className="sidebar">
       <nav aria-label={t('navigation')}>
-        {destinations.map(({ id, label, Icon }) => <a key={id} href={'#' + id}
-          className="nav-link" aria-current={route === id ? 'page' : undefined}>
-          <Icon size={20} aria-hidden="true" /><span>{label}</span>
+        {destinations.map(({ id, label, compactLabel, Icon }) => <a key={id} href={'#' + id}
+          className={'nav-link' + (id === 'about' ? ' nav-link-about' : '')} aria-label={label} aria-current={route === id ? 'page' : undefined}>
+          <Icon size={20} aria-hidden="true" /><span className="nav-label-full">{label}</span>
+          <span className="nav-label-compact" aria-hidden="true">{compactLabel}</span>
         </a>)}
       </nav>
       <div className="sidebar-footer">
@@ -70,6 +73,7 @@ function App() {
       <AllowlistPage state={state} hidden={route !== 'allowlist'} />
       <TabsPage state={state} hidden={route !== 'tabs'} />
       <ActivityPage state={state} hidden={route !== 'activity'} />
+      <AboutPage hidden={route !== 'about'} />
     </main>
     <Toast state={state} />
   </>;

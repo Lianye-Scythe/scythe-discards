@@ -25,11 +25,11 @@ This automates GitHub Releases. Chrome Web Store submission is a separate proces
 5. Review the package with `npm run package`, commit the changes and push `main`.
 6. Create and push the matching version tag. That push authorizes the workflow to publish the release after CI passes.
 
-For example, after committing version `0.3.4`:
+For example, after committing version `0.3.5`:
 
 ```bash
-git tag -a v0.3.4 -m "Scythe Discards v0.3.4"
-git push origin v0.3.4
+git tag -a v0.3.5 -m "Scythe Discards v0.3.5"
+git push origin v0.3.5
 ```
 
 The workflow attaches the extension ZIP and SHA256SUMS. GitHub's automatic Source code archives require building before they can be loaded into Chrome. Builds and temporary reports stay out of Git.

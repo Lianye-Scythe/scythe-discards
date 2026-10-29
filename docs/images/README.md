@@ -8,11 +8,11 @@ The icon source is [public/icon.png](../../public/icon.png); its [generation rec
 
 ## Preview screenshots
 
-These are unedited screenshots of Scythe Discards v0.3.4 using isolated Windows test profiles and example websites. Webpage titles retain their original language.
+These are unedited screenshots of Scythe Discards v0.3.5 using isolated Windows test profiles and example websites. Webpage titles retain their original language.
 
 | Interface language | Files | Capture source |
 | --- | --- | --- |
-| English | `popup.png`, `popup-inherited.png`, `settings.png` | Installed Windows Chrome 156.0.8078.48, local validation |
+| English | `popup.png`, `popup-inherited.png`, `settings.png`, `about.png` | Installed Windows Chrome 156.0.8078.48, local validation |
 | Traditional Chinese | Corresponding `*-zh-TW.png` files | The same browser and fixtures, with Traditional Chinese UI |
 | Simplified Chinese | Corresponding `*-zh-CN.png` files | The same browser and fixtures, with Simplified Chinese UI |
 

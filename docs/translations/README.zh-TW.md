@@ -43,16 +43,19 @@ npm run build
 - **快捷操作：** 暫停自動卸載、保護分頁、增刪網站規則，以及撤銷移除。
 - **清楚狀態：** 顯示保護來源、倒數、近期紀錄與連線錯誤。
 - **有限紀錄：** 保留本次工作階段最新 200 筆，每頁 50 筆，可清除。
+- **關於與支援：** 集中版本、專案連結、問題回報與 ZIP 手動更新說明。
 - **三語與深淺色：** 英文、繁體中文、簡體中文跟隨 Chrome 語言；外觀可跟隨系統，亦可手動選擇。
 
 ## 更多畫面
 
 <details>
-<summary>網站規則來源與設定頁</summary>
+<summary>網站規則來源、設定與關於頁</summary>
 
 <img src="../images/popup-inherited-zh-TW.png" width="300" alt="繼承保護：顯示規則來源與管理入口">
 
 ![繁體中文設定頁](../images/settings-zh-TW.png)
+
+![繁體中文關於頁](../images/about-zh-TW.png)
 
 </details>
 
